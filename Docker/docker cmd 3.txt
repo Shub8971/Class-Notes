@@ -1,0 +1,18 @@
+docker run -dp 80:80 httpd
+
+port binding:-
+we are binding ec2 port with container port
+
+docker volume ls   -- list the volumes
+docker volume create volname   -- creates volume
+docker volume inspect volname   -- details of the volume
+docker volume rm volname   --- delete volume
+docker volume prune -a -f  --- delete all unused volumes
+
+docker run -itdv volname:/path ubuntu bash
+
+docker run -dp 80:80 -v volname:/path httpd
+
+bind mount
+
+docker run -itdv /mnt:/path ubuntu bash

@@ -1,0 +1,87 @@
+whoami ----- shows us what user we are using
+ifconfig --- shows the private IP of the machine
+clear ---- clears the terminal
+sudo su - root ------- sudo (superuserdo) su(switch user)
+cd ---- change directory
+
+cd /pathofTheDirect
+
+cd /root
+cd /
+cd /etc
+
+ls --- list
+ls -ltr --- -l=long list
+			-t = time based sorting
+			-r = reverse sorting
+	
+pwd --- shows present/print working directory
+uname ---- shows os info
+uname -a --- shows all info of OS
+exit/ctrlD ---- to logoff
+man command --- opens the manual and press q for quit
+history --- shows command history
+
+cat > filename press enter
+enter your content -- press enter
+ctrlD to save
+
+---- this will create file with cat command
+
+cat filename ---- it will show the content of the file
+rm -f filename --- deletes the file forcefully
+
+rm -rf filename/dirname ---- deletes files and folders -r=recursive mode
+
+mkdir dirname --- creates directory
+rmdir dirname --- deletes directory
+
+mkdir -p dir1/dir2/dir3 ----- creates parent directory structure
+
+cd ../ ----- goes one back
+cd ../../ --- goes two backwards
+
+* filter ---- * means all
+
+ 82  touch index.html index.jsp index.css qa.html qa.jsp qa.css dev.html dev.jsp dev.css
+   83  ls -ltr
+   84  rm -rf *html
+   85  ls -ltr
+   86  rm -rf qa*
+   87  ls -ltr
+   88  rm -rf *.css
+   89  ls -ltr
+   90  rm -rf *
+
+to create hidden files and directory add . at the beginning
+.velocity
+.index.html
+
+to view the hidden files and folders run ls -ltra
+
+where a=all files
+
+touch filename --- creates empty file
+
+VI EDITOR
+
+famous editor in linux has 2 modes of operation
+1. command mode
+2. insert mode
+
+1. command mode ---- to save, quit and run some command mode operations  -- press esc to switch
+2. insert mode- ----- to edit the file   -- press i to switch
+
+some command mode operations
+
+:wq, :wq!, :x, :x! ---- save and quit and !means forcefully
+
+:q, :q! ---- only quit
+:w -- only save
+x --- delete single char
+r --- replace char
+dd --- delete line and long press d deletes everything
+shift+h --- top of file
+shift+g --- bottom of the file
+o ---- creates new line below and we come in insert mode
+/pattern --- to search a pattern

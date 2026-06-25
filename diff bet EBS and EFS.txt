@@ -1,0 +1,25 @@
+EBS:-
+1. its is a elastic block storage service in which data is stored as a block.
+2. EBS volume is used for single ec2 instance
+3. EBS volume works on SAN technology
+4. We directly attach and mount this EBS volume to ec2 instance
+5. EBS volume is zone specific
+6. We pay for the complete EBS volume which we take from AWS, doesnt matter if we add data in there or not.
+7. we cannot attach a SG to the EBS volume
+8. dynamic elasticity and auto perfomance optimization is not present in EBS
+9. EBS is a bootable drive can we used for bootable storage such as OS etc.
+10. EBS can be used with linux as well as windows.
+
+EFS:-
+1. in EFS data is stored as a file system object not like a block.
+2. EFS is used for multiple ec2 instances.
+3. EFS works on NFS protocol.
+4. EFS is mounted on EC2 instances with the help of mount targets i.e via network with IP address.
+5. We can create single or multi zone file system.
+6. We only pay or the data which we store in EFS, GB/month is the pricing
+7. we can attach SG to EFS and its created inside a VPC, we can make it more secure by creating it in private subnet.
+8. Dynamic elasticity and auto perfomance optimization is present
+9. EFS is not a bootable drive.
+10. EFS can only work for linux based os.
+11. EFS is used as a common data store to store the application data which can be accessed through multiple ec2 instances.
+12. Multiple storage classes are present in EFS.

@@ -1,0 +1,29 @@
+Agile Model:-
+Meaning of Agile ---- Move Quickly
+
+A large Project is Broken down into smaller chunks/parts and then
+developed and released to the customer one by one in iteration.
+
+this model has a customer feedback based approch
+
+Once any Version is released to the customer,
+the customer will give a feedback and then based on the feedback enhancements are done accordingly
+and our software is re-released.
+
+release ---> feedback ---> Enhancements ---> Re-release
+
+Advantages of Agile Model:-
+1. Time to Market is less
+2. Customer Feedback Based Model
+3. its suitable for complex projects
+4. its suitable for ongoing projects
+5. less risk
+6. Frequent delivery of new changes.
+7. if there are changes in requirements, then we can adapt those
+changes in our project without any issue, or its smoothly done.
+
+Disadvantages:-
+1. Less Documentation
+2. complex structure compared to waterfall
+3. Maintenance:-
+	

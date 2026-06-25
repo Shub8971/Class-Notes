@@ -1,0 +1,22 @@
+Disadvantages of virtualization:-
+1. hypervisors are not that efficient
+2. slowness
+3. boot up time increases
+4. VM is running full OS which consists of multiple other unwanted programs which consume resources,
+our objective is to run only our application
+5. if our app is down, the vm is still up and running and consuming our resources
+6. sharing is difficult as its a full OS
+
+
+Containerization:-
+Containers are lightweight VM.
+A container will contain only the binaries/libraries/config-files which are needed
+for the application to run, other than that it wont have anything extra.
+A container consists of only your app conpoments encapsulated in a isolated box.
+
+
+Advantages
+1. efficient, fast and bootup time is fast
+2. lightweight os only runs your app, no unwanted programs.
+3. if app is down container is down and resources are given back to host os and h/w
+4. sharing is easy as light weight\

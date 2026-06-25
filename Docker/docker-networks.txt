@@ -1,0 +1,51 @@
+Docker Networks:-
+
+Multiple containers running on a ec2 instance are isolated from each other.
+Docker network is nothing but a communication channel between multiple containers.
+
+Network infra:- aws network interface, eth0... aws instance ka ye networking
+
+network driver:- it will help you create docker networks
+IPAM driver (IP address managemnt) --- it works on IP address managements for our containers
+created in a network
+
+Network:- is a group of endpoints which have the ability to communicate with
+each other directly
+
+Network sandbox:- it containers configuration of a container network.
+dns setting
+route table
+container network interface
+
+Endpoint:- An endpoint is something which joins sandbox/container to the network.
+
+
+Types of Docker Network:-
+1. Bridge Network (Default)
+2. Host Network
+3. None Network
+4. Overlay network
+5. macvlan
+6. ipvlan
+....
+
+1. Bridge network:- 
+there are 2 types of bridges
+a. default brige network:- it is nothing but a network created when docker is installed.
+all the containers run with this network setting.
+
+here docker0 is nothing but a virtual bridge interface, through which
+containers can communicate with each other
+
+b. custom bridge network:- here we can create our own bridge network
+
+2. host network:-
+here the container will have host ip
+
+3. none network:- 
+here container will have no network and cannot communicate to internet or other containers
+
+
+
+
+

@@ -1,0 +1,49 @@
+SAAS:-
+here a particular softare program is hosted as a service over the internet and the user doesnt 
+need to have any software technical knowledge to use that service.
+its a software hosted in cloud which we can access over the internet.
+
+eg: google drive, dropbox
+
+PAAS:-
+PASS or apass (application platform as a service) is a service in cloud computing that enables customer to
+run a software application on it.
+
+the only major differnce between SAAS and PAAS is that SAAS provides software over the internet and
+pAAS provides platform for application development
+
+eg: google app engine
+
+IAAS:-
+this is a service where the software infra like servers, db, storage , ram, cpu can be get by the customer over the internet.
+
+AWS is a public cloud platform which provides SAAS, PAAS and IAAS
+
+AWS Region is a geographical location where AWS keeps its DC.
+
+AWS GLobal Infra:-
+https://aws.amazon.com/about-aws/global-infrastructure/
+
+
+Features of AWS:-
+Main Features
+a. Infra Maintenance is not on our side.
+b. H/W related upgrade or downgrade Is not on our side.
+c. Pay as you go.  Service provided on rental basis.
+d. Only pay for the time you use. (Per Hour billing format)
+e. On Demand, Flexible, Scalable etc.
+Elastic Capacity
+Scaling Up and Down in mins
+No need to provision
+Optimization of resources such as CPU/RAM etc. is possible.
+Can manage unexpected peaks in traffic
+
+
+Quick and Easy Deployments.
+IT infra is no longer a barrier
+Easier to test software on different solutions
+No need to wait for provisioning 
+
+
+No initial investment needed
+Automation and reusable components-

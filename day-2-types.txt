@@ -1,0 +1,42 @@
+Private Cloud
+Public Cloud
+Hybrid Cloud
+Multi Cloud
+
+Private cloud:-
+Private cloud is a cloud computing enjoinment in which all hardware and software resources are dedicated exclusively to, or accessible by a single customer.
+It’s a on-premises infrastructure.
+Companies choose private cloud because their workload deals with confidential documents, financial data etc.
+Private cloud is a single-tenant environment, meaning all resources are accessible to one customer only—this is referred to as isolated access. Private clouds are typically hosted on-premises in the customer's data center.
+
+Adv:-
+Full control of hardware and software choices.
+Freedom to customize hardware and software in any way.
+Greater visibility into security and access control as workload is behind customers firewall.
+DisAdv:-
+Higher cost of installing hardware/software
+Infrastructure management cost is high
+Limited flexibility.
+
+Public Cloud:-
+Public cloud is a multi-tenant cloud environment, where the same computing resources are shared among multiple customers—sometimes hundreds or thousands of them.
+In public cloud, an independent cloud services provider owns and maintains the infrastructure, and access to resources is offered on a subscription basis or via pay-per-use pricing.
+Customer doesn’t have to maintain any hardware and no need for DC management.
+
+Adv:-
+Greater elasticity and scalability: With public cloud, a customer can add capacity in response to unexpended surges in traffic, without purchasing and installing new hardware.
+Lower cost of entry: Most customers can begin using public cloud services without adding physical compute resources of their own.
+Faster access to the latest technologies: In many cases, economies of scale enable cloud providers to offer the latest hardware and software faster than customers could if they had to purchase and install them themselves.
+
+Only Disadvantage could be that overall control over the hardware is not there, may be in some cases security can be an issue.
+
+
+Hybrid:-
+A hybrid cloud integrates public and private cloud infrastructures. In this model, the two types of cloud are joined together into a single, flexible infrastructure, and the enterprise can choose the optimal cloud environment for each individual application or workload.
+In simple words infra is shared in between your local data center and public cloud.
+
+Multi:-
+Here if you could see in the multi cloud architecture, some applications are deployed in AWS others are deployed in Azure etc.
+This is done in large organizations as per client requirements
+
+

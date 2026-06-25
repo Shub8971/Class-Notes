@@ -1,0 +1,32 @@
+yum list --- list the no of packages
+yum list available --- list the available packages
+yum list installed --- list the installed packages
+yum install httpd
+
+yum list tree ------ shows if tree package is available or not
+yum install tree -y ---- to install tree
+yum remove tree -y ---- to remove tree
+yum update tree -y ---- to update tree
+
+yum update -y ----- it will update kernal+ all packages
+yum upgrade -y
+
+yum-config-manager --add-repo http://velocity.com/repository
+
+cd /etc/yum.repos.d/ --- here you can find the yum repository config files.
+
+service httpd start
+service httpd status
+service httpd stop
+service httpd restart
+
+
+systemctl start httpd
+systemctl stop httpd
+systemctl status httpd
+systemctl restart httpd
+
+Daemon process is the background process which is running on the OS, 
+represented by d at the last.
+
+httpd --- apache http d server

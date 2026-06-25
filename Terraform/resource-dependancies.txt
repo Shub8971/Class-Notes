@@ -1,0 +1,18 @@
+resource dependancy ##explicit dependancy
+
+resource "local_file" "shantanu" {
+        filename = var.filename
+        content = var.content
+
+}
+
+resource "local_file" "mahesh" {
+        filename = var.filename2
+        content = var.content2
+
+        depends_on = [
+
+                local_file.shantanu
+        ]
+}
+[root@ip-172-31-34-1 project]#

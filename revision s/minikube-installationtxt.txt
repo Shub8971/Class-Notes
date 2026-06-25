@@ -1,0 +1,109 @@
+#!/bin/bash
+set -e
+
+echo "=== Step 1: Update system ==="
+sudo yum update -y
+
+echo "=== Step 2: Install kubectl ==="
+KUBECTL_VERSION=$(wget -qO- https://dl.k8s.io/release/stable.txt)
+echo "Latest kubectl version: $KUBECTL_VERSION"
+wget https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -O kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version --client
+
+echo "=== Step 3: Install minikube ==="
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -O minikube-linux-amd64
+chmod +x minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+minikube version
+
+echo "=== Step 4: Install basic dependencies ==="
+sudo yum install -y wget git tar conntrack-tools socat iptables
+
+echo "=== Step 5: Install Docker ==="
+sudo yum install -y docker
+sudo systemctl enable --now docker
+
+echo "=== Step 6: Install crictl ==="
+CRICTL_VERSION="v1.30.0"
+wget https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-amd64.tar.gz
+sudo tar -C /usr/local/bin -xzf crictl-${CRICTL_VERSION}-linux-amd64.tar.gz
+rm -f crictl-${CRICTL_VERSION}-linux-amd64.tar.gz
+echo "crictl installed: $(crictl --version)"
+
+echo "=== Step 7: Install cri-dockerd ==="
+CRIDOCKERD_VERSION="0.3.13"
+wget https://github.com/Mirantis/cri-dockerd/releases/download/v${CRIDOCKERD_VERSION}/cri-dockerd-${CRIDOCKERD_VERSION}.amd64.tgz
+tar -xvf cri-dockerd-${CRIDOCKERD_VERSION}.amd64.tgz
+sudo mv cri-dockerd/cri-dockerd /usr/local/bin/
+sudo chmod +x /usr/local/bin/cri-dockerd
+rm -rf cri-dockerd-${CRIDOCKERD_VERSION}.amd64.tgz cri-dockerd
+
+echo "=== Step 8: Setup systemd units for cri-dockerd ==="
+
+# Create cri-docker.socket first
+sudo tee /etc/systemd/system/cri-docker.socket > /dev/null <<'EOF'
+[Unit]
+Description=CRI Socket for Docker
+PartOf=cri-docker.service
+
+[Socket]
+ListenStream=/var/run/cri-dockerd.sock
+SocketMode=0660
+SocketUser=root
+SocketGroup=docker
+
+[Install]
+WantedBy=sockets.target
+EOF
+
+# Create cri-docker.service
+sudo tee /etc/systemd/system/cri-docker.service > /dev/null <<'EOF'
+[Unit]
+Description=CRI interface for Docker
+Documentation=https://docs.mirantis.com
+After=network.target docker.service
+Requires=docker.service cri-docker.socket
+
+[Service]
+ExecStart=/usr/local/bin/cri-dockerd --container-runtime-endpoint fd://
+Restart=always
+RestartSec=5s
+StartLimitBurst=3
+StartLimitInterval=60s
+User=root
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Reload systemd and enable socket/service
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable --now cri-docker.socket
+sudo systemctl enable --now cri-docker.service
+
+echo "=== Step 9: Install CNI plugins ==="
+CNI_VERSION="v1.5.1"
+sudo mkdir -p /opt/cni/bin /etc/cni/net.d
+wget https://github.com/containernetworking/plugins/releases/download/${CNI_VERSION}/cni-plugins-linux-amd64-${CNI_VERSION}.tgz
+sudo tar -C /opt/cni/bin -xzf cni-plugins-linux-amd64-${CNI_VERSION}.tgz
+rm -f cni-plugins-linux-amd64-${CNI_VERSION}.tgz
+
+echo "=== Step 10: Ensure conntrack is in PATH ==="
+export PATH=$PATH:/usr/sbin
+echo 'export PATH=$PATH:/usr/sbin' >> ~/.bashrc
+
+echo "=== Step 11: Verify installations ==="
+echo "- kubectl: $(kubectl version --client --short)"
+echo "- minikube: $(minikube version)"
+echo "- conntrack: $(which conntrack)"
+echo "- Docker: $(docker --version)"
+echo "- crictl: $(crictl --version)"
+echo "- cri-dockerd: $(cri-dockerd --version 2>/dev/null || echo 'OK')"
+echo "- CNI plugins: $(ls /opt/cni/bin | head -5)..."
+
+echo "=== All prerequisites installed. You can now run: ==="
+echo "minikube start --driver=none --force"

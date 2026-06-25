@@ -1,0 +1,77 @@
+cp filename destpath --- copy the file to the destination path
+cp -r dirname destpath -- -r=recursive mode to copy a folder
+
+2 methods of copy
+1. PUT method
+here we generally run the command in the source location
+
+cp -r test /home/ec2-user
+
+here test folder is in /root, so we are running the command from /root
+
+2. GET method
+here we run the command from dest location
+
+so lets say our file/dir is in /root, and we want to copy in /home/ec2-user
+
+we will run the below comamnd in /home/ec2-user location
+
+cp -r /root/test . ----- here . means current location
+
+mv index.html shantanu.html ----- rename
+mv index.html /home/ec2-user ---- cut and paste
+
+grep -i pattern filename ----- to search pattern in files
+
+-i=case insensative
+-c=count
+
+wget URL ---- download the content from the internet url
+
+Archivers
+1. Tar
+
+tar -cvzf tarname.tar.gz dirname
+-c=create
+-v=verbose
+-z=gzip
+-f=forcefully
+
+to extract the tar
+tar -xvzf tarname.tar.gz
+-x=extract
+
+2. ZIP
+
+zip -r zipname.zip dirname
+
+unzip zipname.zip
+
+to check the size of files and dir
+
+du -sh filenmae/dirname
+-s=summerize
+-h=human readable
+du -- disk utilization
+
+Symbolic links
+1. hardlink -- backup --only for the files
+
+ln filename /destinationPath/filename-backup
+
+2. softlink ---shortcut ---both for files and directories
+
+ln -s path shortcutname
+ ~]# ln -s /home/ec2-user/aws/velocity/test/vpc/ec2/s3/index.html index.html-sc
+[root@ip-172-31-47-160 ~]# ls -ltr
+total 0
+lrwxrwxrwx 1 root root 54 Apr 24 15:28 index.html-sc -> /home/ec2-user/aws/velocity/test/vpc/ec2/s3/index.html
+[root@ip-172-31-47-160 ~]# cat index.html-sc
+wqjgnqjng
+[root@ip-172-31-47-160 ~]#
+[root@ip-172-31-47-160 ~]#
+[root@ip-172-31-47-160 ~]# vi index.html-sc
+[root@ip-172-31-47-160 ~]# ls -ltr
+total 0
+lrwxrwxrwx 1 root root 54 Apr 24 15:28 index.html-sc -> /home/ec2-user/aws/velocity/test/vpc/ec2/s3/index.html
+[root@ip-172-31-47-160 ~]#

@@ -1,0 +1,44 @@
+git branch --- shows all the branches
+git branch branchname --- creates a new branch
+git checkout -b branchname --- creates branch and switches as well
+git checkout branchname ----- switches branch
+git branch -d branchname --- deletes branch, -D for forcefully delete
+git push origin branchname --- to push branch
+git push origin --all ---- to push all changes
+git clone url -b branchname --- to clone a branch
+git pull origin branchname --- pulls the latest changes
+
+git merge branch
+
+lets say we want to merge dev branch to master.
+
+1st goto master branch
+then run
+
+git branch dev ==== here we are pulling the changes from dev branch to master, 
+                    this is called as pulling mechanism
+
+git merge --abort ---- to abort the merge
+
+git reset:-
+
+git reset HEAD~1  -- to delete the commit 
+
+three types:- mixed (default), Hard, soft
+
+git reset HEAD~1 --soft
+
+git revert commitID
+then add comment to the pop-up.
+
+git tag tagname commitID   -- lightweight
+
+git tag tagname commitID -m "message to write"   -- heavy
+
+git tag -------------- can list
+
+git show tagname
+
+git tag -d tagname
+
+git push origin master --tags

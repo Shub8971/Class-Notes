@@ -1,0 +1,84 @@
+Terraform:
+
+1. Infrastructure as Code (IaC):
+   - Role:
+     - Use Terraform to define and provision infrastructure.
+
+   - Responsibility:
+     - Write and maintain Terraform scripts for provisioning and managing infrastructure resources.
+     - Ensure version control for Terraform configurations.
+
+2. Automation and Consistency:
+   - Role:
+     - Automate the deployment and scaling of infrastructure components.
+
+   - Responsibility:
+     - Implement automated processes for infrastructure provisioning.
+     - Ensure consistency of infrastructure across different environments.
+
+3. Collaboration:
+   - Role:
+     - Collaborate with development and operations teams.
+
+   - Responsibility:
+     - Work closely with teams to understand infrastructure requirements.
+     - Coordinate Terraform changes with other teams for seamless integration.
+
+4. Continuous Improvement:
+   - Role:
+     - Continuously improve Terraform configurations and processes.
+
+   - Responsibility:
+     - Monitor and optimize Terraform scripts for better performance.
+     - Stay updated with Terraform best practices and updates.
+
+5. Documentation:
+   - Role:
+     - Maintain documentation for Terraform configurations.
+
+   - Responsibility:
+     - Document infrastructure architecture and changes made through Terraform.
+     - Ensure documentation is accessible and up-to-date.
+
+ Kubernetes:
+
+1. Container Orchestration:
+   - Role:
+     - Manage and orchestrate containerized applications using Kubernetes.
+
+   - Responsibility:
+     - Deploy and manage Kubernetes clusters for container orchestration.
+     - Define and manage Kubernetes resources like pods, services, and deployments.
+
+2. Scalability and Monitoring:
+   - Role:
+     - Monitor and scale applications within Kubernetes clusters.
+
+   - Responsibility:
+     - Set up monitoring tools to track application and cluster performance.
+     - Implement auto-scaling based on application demand.
+
+3. CI/CD Integration:
+   - Role:
+     - Integrate Kubernetes into CI/CD workflows.
+
+   - Responsibility:
+     - Define deployment pipelines that include Kubernetes configurations.
+     - Ensure smooth integration between development and Kubernetes environments.
+
+4. Troubleshooting:
+   - Role:
+     - Troubleshoot issues related to Kubernetes deployments.
+
+   - Responsibility:
+     - Analyze logs and metrics for identifying and resolving problems.
+     - Collaborate with development teams in debugging application-related issues.
+
+5. Security and Resource Management:
+   - Role:
+     - Implement security best practices in Kubernetes environments.
+
+   - Responsibility:
+     - Configure RBAC (Role-Based Access Control) for secure cluster access.
+     - Optimize resource utilization through proper configuration and scaling.
+

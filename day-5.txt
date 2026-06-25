@@ -1,0 +1,33 @@
+J2EE ---- Java Enterprize Edition
+IN Java there are multiple technologies
+some are web technologies and some are enterprize
+
+if a application is using web technologies we call it
+webapp or webapplication and packaged into WAR file (Web archive)
+and if a application is using enterprize tech, we call it
+enterprize application or EJB application (enterprize java beans)
+which is packaged into EAR (Enterprize Archive)
+
+When Agile is implemented then we call that term as scrum.
+
+in Scrum there are multiple terms.
+
+1. Scrum Team:-
+this is nothing but a team which consist of multiple dev, testers, devops engg, BA and etc
+
+the person leading this team in terms of like taking updated, monitoring member tasks etc
+is called a SCRUM Master
+
+2. Scrum Ceremonies:-
+a. Planning Meeting:--- we plan all the roles and responsibiltes and features in this meeting
+b. Daily Scrum Meeting:- here daily we are connecting/collaboration with each other
+and discussing the project daily updates
+c. Review Meeting:- all the new features developed are reviewd
+d. Retrospective Meeting:- INcase there was any hurdle or problem during the sprint cycle then
+we can discuss that and discuss on what steps we can implement to avoid issues in furture.
+
+Sprint:- Each release is divided into sprints.
+
+for eg:- release 1 has 6 features
+so these 5 features can be developed and testing in lets say 3 sprints
+each sprint will have 2 features

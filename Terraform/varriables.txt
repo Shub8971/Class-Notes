@@ -1,0 +1,32 @@
+#Variables in terraform
+
+-rw-r--r-- 1 root root 1497 Jan 22 15:16 terraform.tfstate
+[root@ip-172-31-34-1 project]# cat main.tf
+resource "local_file" "shantanu" {
+        filename = var.filename
+        content = var.content
+}
+
+resource "local_file" "mahesh" {
+        filename = var.filename2
+        content = var.content2
+}
+[root@ip-172-31-34-1 project]# cat variables.tf
+#defining a variable
+variable "filename" {
+
+        default = "/mnt/shantanu.html"
+}
+
+variable "content" {
+        default = "this is variable 1"
+}
+
+variable "filename2" {
+        default = "/mnt/mahesh.html"
+}
+
+variable "content2" {
+        default = "this is variable 2"
+}
+[root@ip-172-31-34-1 project]#

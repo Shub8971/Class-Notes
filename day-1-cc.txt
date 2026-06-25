@@ -1,0 +1,18 @@
+Simply put, cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet (“the cloud”) to offer faster innovation, flexible resources, and economies of scale. 
+You typically pay only for cloud services you use, helping lower your operating costs, run your infrastructure more efficiently and scale as your business needs change.
+
+1. Resource Pooling: combining multiple services that cloud has to offer together as per requirement
+
+2. On Demand Service: Cloud has the capacity to satisfy user demands as per requirement
+
+3. Easy Maintenance:- As Hardware related maintenance is not on our side,hence easy maintenance
+
+4. High Availiablity:- Cloud services are highly available
+
+5. Economical:- Services offered are cheaper and affordable
+
+6. Pay as you go:- you only pay for the services you use and for the time and amount you use.
+
+7. secure:- Using cloud is secure
+
+8. Automation and Reusable components

@@ -1,0 +1,34 @@
+Devops Team: (After Devops)
+
+Role and resp.
+1. Creating and Maintaing cloud infrastructure.
+cloud infra consists of compute (RAM,CPU), storage, networking, DB and etc.
+EC2, VPC, EFS, S3, IAM, RDS
+
+2. Monitoring of cloud infrastructure. ( CW, CT, SNS )
+
+3. Source Code Management ( git, github )
+
+4. Build and release (Maven)
+
+5. CI/CD ( Continuous integrationa and continous deployment/delivery)  --- (Jenkins)
+
+6. Containerization ( Docker )
+
+7. Configuration management ( Ansible )
+
+Advanced Tools:-
+
+8. Infrastruction Provisioning ( terraform )
+
+9. orchestration ( kubernetes )
+
+10. Jira ( ticketing tool )
+
+DEVOPS Team:-
+
+1. includes some part of dev team, i.e source code management, and build.
+2. includes full part of build and relase team.
+3. devops team includes full part of system admin team.
+4. some part of DB support team.
+5. some part of it ops team.

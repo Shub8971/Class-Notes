@@ -1,0 +1,46 @@
+yum install docker -y
+systemctl start docker
+/var/lib/docker ---- docker home
+
+
+docker pull imagename
+dcker pull imagename:tagname --- paritcular tag download
+docker images
+docker image ls ----- list docker images
+docker rmi imagename ---- delete image
+
+docker rmi -f imagename ----- delete images forcefully
+
+docker rmi imagename:tagname 
+
+
+docker container ls
+docker ps ------ shows running containers
+
+docker contianer ls -a
+docker ps -a ----- shows all containers
+
+docker run imagename ---- creates container from image
+Note:- everytime you run the RUN command a new container is created
+
+docker container rm contID/contName
+docker rm contID/contName  --- delete the container
+
+
+docker run ubuntu whoami
+docker run ubuntu hostname --- this will run command inside the container
+
+docker run -it ubuntu bash --- i=input/interactive -t=terminal bash terminal
+ctrld/exit ---- logout and container shutdown
+ctrlPQ --- logout but container up and running
+ps -ef --- inside the container to check the process
+apt-get update -y
+apt-get install vim -y --- to install
+
+docker start contID/contName
+docker stop contID/contName  --- gracefully shutdown
+docker attach contID/contName  --- to relogin
+docker kill contID/contName  --abruptly shutdown
+
+docker system prune -a -f ------ deletes all the unused images and stopped containers
+

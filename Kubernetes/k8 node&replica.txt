@@ -1,0 +1,117 @@
+###Node Selector####
+[velocity@ip-172-31-43-181 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+  labels:
+    env: qa
+
+
+spec:
+  containers:
+    - name: v1
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+
+
+  nodeSelector:
+    machine: dev-1
+
+
+  8  kubectl get nodes
+    9  kubectl get nodes --show-labels
+   10  kubectl apply -f pod.yaml
+   11  kubectl get pods
+   12  kubectl describe pods
+   13  kubectl delete pods velpod
+   14  kubectl label node minikube machine=dev-1
+   15  kubectl get nodes --show-labels
+   16  kubectl apply -f pod.yaml
+   17  kubectl get pods
+#######rc#####
+[velocity@ip-172-31-43-181 ~]$ cat rc.yaml
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: velocityrc
+
+spec:
+  replicas: 2
+  selector:
+    env: qa
+
+
+  template:
+    metadata:
+      name: velpod
+      labels:
+        env: qa
+
+    spec:
+      containers:
+        - name: v1
+          image: 'centos:8'
+          command: [ "ping", "localhost" ]
+
+ 23  vi rc.yaml
+   24  kubectl apply -f rc.yaml
+   25  kubectl get rc
+   26  kubectl get pods
+   27  kubectl describe rc
+   28  kubectl get pods
+   29  kubectl logs -f velocityrc-b6vgw
+   30  kubectl get pods
+   31  kubectl get pods -o wide
+   32  kubectl delete pods velocityrc-b6vgw
+   33  kubectl get pods
+   34  kubectl get pods -o wide
+   35  vi rc.yaml
+   36  kubectl scale --replicas=5 rc/velocityrc
+   37  kubectl get pods
+   38  kubectl scale --replicas=10 rc/velocityrc
+   39  kubectl get pods
+   40  kubectl scale --replicas=2 rc/velocityrc
+   41  kubectl get pods
+   42  kubectl delete -f rc.yaml
+##########rs#########
+[velocity@ip-172-31-43-181 ~]$ cat rs.yaml
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: velocityrs
+
+
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - {key: env, operator: In, values: [dev,qa,uat]}
+      - {key: domain, operator: NotIn, values: [telecom,insurance]}
+
+
+  template:
+    metadata:
+      name: velpod
+      labels:
+        env: qa
+        domain: healthcare
+
+    spec:
+      containers:
+        - name: v1
+          image: 'centos:8'
+          command: [ "ping", "localhost" ]
+49  vi rs.yaml
+   50  kubectl apply -f rs.yaml
+   51  cat rs.yaml
+   52  kubectl get pods
+   53  kubectl get rs
+   54  kubectl get pods
+   55  kubectl delete pods velocityrs-k6cdw
+   56  kubectl get pods
+   57  kubectl scale --replicas=10 rs/velocityrs
+   58  kubectl get pods
+   59  kubectl scale --replicas=2 rs/velocityrs
+   60  kubectl get pods
+   61  kubectl delete -f rs.yaml

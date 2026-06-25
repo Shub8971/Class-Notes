@@ -1,0 +1,12 @@
+Roles and responsibility of devops with respect to DB
+
+1. Creating and Maintaing RDS db instances for different envs
+2. Monitoring of db instances
+3. creating Databases and creating tables according to the appplication
+4. Database settings in the application side or server side
+5. Backup Management and update/patching Management of database
+6. On Daily/regular basis support DB team, QA team and Dev teams to create/update/alter tables or database related properties
+as per there requirement
+7. Managing multiple DB instances of our project (we have multiple envs so multiple db instances)
+for eg one db instance for dev env, 2 db instance for qa env and 1 db instance uat env.
+8. creating read replicas as well.

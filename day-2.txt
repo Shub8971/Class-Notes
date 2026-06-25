@@ -1,0 +1,54 @@
+Software:- Set or group of multiple programs running together.
+Software Program/Program:- Set of logical instructions.
+
+So a Software company focuses on creating, managing, delivering,
+maintaing softwares.
+
+Types of IT companies in Market:-
+
+1. Product Based IT companies:-
+	These companies create there own software products.
+	eg:- Oracle, IBM, CISCO, MICROSOFT....
+	
+	
+2. Service Based IT companies:-
+	These companies provide there services to other companies.
+	Eg:- infosys, accenture, techm, capgemini......
+	
+SDLC:- Software Development Lifecycle.
+This is nothing but a process which is followed in a company/project to develop
+and deliver a software app/software product asap.
+
+Stages/Phases of SDLC:-
+
+1. Requirement Phase:- (Planning Phase)
+BA collect the requirements from the customer/client as per there
+needs and create a proper requirement documentation
+then this requirement is shared within the internal project team.
+
+BA:- Business Analyst  --- a person who interacts with the client.
+
+2. Analysis Phase:-(Planning Phase)
+ Once the requirment is gathered, the next step is to analyse the
+ customer requirement within the project team, and create a internal documentation.
+ 
+3. Design Phase:-(Planning Phase)
+a. High Level Design:- High level software Architechture
+b. Low Level Design:- in detail software design, means we will 
+design minute things such as which technology should we implement,
+which features should we implement etc etc
+
+4. Development Phase:- Actual development/coding is started in this phase.
+in this phase the code which is developed is called as Source Code.
+
+5. Testing Phase:- After development is done, a through testing
+is done. multiple testing teams work together and test our created software.
+there are multiple types of testing which is done.
+
+6. Deployment Phase:- 
+	Here the created software is given/delivered to the customer.
+	software is deployed in the customer env.
+
+7. Maintenance Phase:- 
+	Incase there is any issue related to software delivered to our client,
+	and our client raises any issue, in this phase we solve the clients problem

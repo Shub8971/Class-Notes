@@ -1,0 +1,216 @@
+###Deployment##
+[velocity@ip-172-31-35-200 ~]$ cat deploy.yaml
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: veldeploy
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: qa
+
+  template:
+    metadata:
+      name: velpod
+      labels:
+        env: qa
+
+
+    spec:
+      containers:
+        - name: v1
+          image: 'centos:8'
+          command: [ "ping", "localhost" ]
+
+  10  kubectl apply -f deploy.yaml
+   11  kubectl get deploy
+   12  kubectl get rs
+   13  kubectl get deploy
+   14  kubectl get rs
+   15  kubectl get pods
+   16  kubectl delete pods veldeploy-69579787dd-gsh9z
+   17  kubectl get pods
+18  kubectl scale --replicas=10 deploy/veldeploy
+   19  kubectl get pods
+   20  kubectl scale --replicas=2 deploy/veldeploy
+
+
+######deployment rollout/rollback feature######
+[velocity@ip-172-31-35-200 ~]$ cat deploy.yaml
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: veldeploy
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: qa
+ template:
+    metadata:
+      name: velpod
+      labels:
+        env: qa
+
+
+    spec:
+      containers:
+        - name: v1
+          image: ubuntu
+          command: [ "/bin/bash", "-c", "while true; do echo 'vel app v3'; done" ]
+
+0  kubectl apply -f deploy.yaml
+   11  kubectl get deploy
+   12  kubectl get rs
+   13  kubectl get deploy
+   14  kubectl get rs
+   15  kubectl get pods
+   16  kubectl delete pods veldeploy-69579787dd-gsh9z
+   17  kubectl get pods
+   18  kubectl scale --replicas=10 deploy/veldeploy
+   19  kubectl get pods
+   20  kubectl scale --replicas=2 deploy/veldeploy
+   21  cat deploy.yaml
+   22  history
+   23  kubectl delete -f deploy.yaml
+   24  vi deploy.yaml
+   25  cat deploy.yaml
+   26  kubectl apply -f deploy.yaml
+27  kubectl get deploy
+   28  kubectl get rs
+   29  kubectl get pod
+   30  kubectl logs -f  veldeploy-6d5d8bc5-qdfk4
+   31  vi deploy.yaml
+   32  cat deploy.yaml
+   33  kubectl apply -f deploy.yaml
+   34  kubectl get deploy.yaml
+   35  kubectl get deploy
+   36  kubetl get rs
+   37  clear
+   38  kubectl get rs
+   39  kubectl get pods
+   40  kubectl logs -f veldeploy-55bf5dcfc6-8pvm6
+   41  vi deploy.yaml
+   42  kubectl apply -f deploy.yaml
+   43  kubectl get rs
+   44  kubectl get pods
+   45  clear
+   46  kubectl rollout status deploy veldeploy
+   47  kubectl rollout history deploy veldeploy
+   48  kubectl rollout undo deploy/veldeploy --to-revision=1
+   49  kubectl get rs
+   50  kubectl get pods
+   51  kubectl logs -f veldeploy-6d5d8bc5-dwtzl
+   52  cat deploy.yaml
+   53  history
+
+########basics of k8s networking###########
+[velocity@ip-172-31-35-200 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+
+
+spec:
+  containers:
+    - name: v1
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+
+[velocity@ip-172-31-35-200 ~]$ cat pod-1.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod-1
+
+spec:
+  containers:
+    - name: v2
+      image: httpd
+      ports:
+        - containerPort: 80
+
+
+57  vi pod.yaml
+   58  kubectl apply -f pod.yaml
+   59  kubectl get pdos
+   60  kubectl get pods
+ 61  cat pod.yaml
+   62  kubectl exec velpod -itc v1 -- bash
+   63  kubectl delete -f pod.yaml
+   64  vi pod.yaml
+   65  kubectl apply -f pod.yaml
+   66  kubectl get pods
+   67  kubectl exec velpod -itc v1 -- bash
+   68  kubectl delete pods velpod
+   69  vi pod.yaml
+   70  vi pod-1.yaml
+   71  kubectl appl -f pod
+   72  clear
+   73  kubectl apply -f pod.yaml
+   74  kubectl apply -f pod-1.yaml
+   75  kubectl get pods -o wide
+   76  kubectl exec velpod -itc v1 -- bash
+   77  cat pod
+   78  cat pod.yaml
+   79  cat pod-1.yaml
+   80  history
+
+
+curl localhost:80
+curl podip:80
+
+
+#services
+
+[velocity@ip-172-31-35-200 ~]$ cat service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: velservice
+spec:
+  ports:
+    - port: 80 #port number exposed of the container
+      targetPort: 80 ###pod port
+
+  selector:
+    env: qa
+
+  type: NodePort
+
+ 105  vi service.yaml
+  106  kubectl get pods --show-label
+  107  kubectl get pods --show-labels
+  108  kubectl apply -f service.yaml
+  109  kubectl get svc
+  110  kubectl get pods -o wide
+  111  minikube ssh
+  112  kubectl delete pods veldeploy-5f6f6b9c45-vkvwc
+  113  kubectl get pods -o wide
+  114  minkube ssh
+  115  minikube ssh
+  116  curl http://10.104.4.203:80
+  117  kubeclt delete service velservice
+  118  kubectl delete service velservice
+  119  vi service.yaml
+  120  kubectl apply -f service.yaml
+  121  kubectl get svc
+  122  minikube service velservice --url
+  123  curl http://192.168.49.2:30757
+  124  minikube delete -f service.yaml
+  125  kubectl delete -f service.yaml
+  126  vi service.yaml
+  127  kubectl apply -f service.yaml
+  128  minikube service velservice --url
+ 129  kubectl delete -f service.yaml
+  130  vi service.yaml
+  131  kubectl apply -f service.yaml
+  132  kubectl get svc
+  133  kubectl port-forward --address 0.0.0.0 svc/velservice:30309:80 &
+  134  kubectl port-forward --address 0.0.0.0 svc/velservice:30309:80
+  135  kubectl port-forward --address 0.0.0.0 svc/velservice 30309:80
+  136  cat service.yaml

@@ -1,0 +1,32 @@
+Development Team:- Source Code Development
+
+This Source code is then pushed to the repository
+
+Repository: it is a centralized location for our source code, where multiple
+developers can collaborate
+
+Build and Release Team:- 
+the work of build and release team is to compile and package the source 
+code to prescribed format, for eg here we are considering WAR package.
+
+This War is then deployed on Multiple Tests Envs for testing purpose.
+
+Once testing is sucessful then this war is pushed to production, where the client
+will use/access the application.
+
+As production Env is a highly critical env, and needs zero downtime, hence
+to manage this env there is a production support team.
+Production support team works on management of prod env, for eg, managing VMs, servers, software installations
+OS upgrade, OS installation, software updates and etc.
+
+System Admins/Support Team:-
+this team basically work on management of test envs, like creating maintaing VMs, servers, OS, softwares, updates etc....
+
+DB support Team (Database):-
+DB is a software which has the application data.
+DB team is specifically working on management, creation, updation of DB in multiple diff envs.
+
+ITOps Team (IT operations):-
+Basically this team works on documentation, monitoring of all envs.
+
+customer support team:- Handle client queries

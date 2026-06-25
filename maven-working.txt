@@ -1,0 +1,27 @@
+Whenver development team is working on building a application
+for a project, it can be a web application or enterprize application
+or any other application,
+
+dev team will write the custom source code and push it to git hub,
+dev team uses open source code (open source dependencies) which are already
+available and posted by the development communities worldwide.
+this open source code is then integrated by the developers in there custom code and an appplication is created.
+
+the open source dependencies or also called as open source libraries
+are available in jar format (java archive) which consists or complied java class files, which are ready to be integrated as it is.
+
+The open source code dependencies are available in a repository also called maven central repository from which we can freely download it. Below is the link
+
+https://mvnrepository.com/repos/central
+
+-------------------
+-------------------
+
+Maven is a build tool which helps in:-
+a. downloading open source dependencies.
+b. compliling custom source code.
+c. integrating Open source dependencies with the compilied code.
+d. packaging the full compiled and integrated code in WAR/EAR format as per need.
+
+WAR --- Web archive which is nothing but used to host web application
+EAR -- enterprize archive which is used to run/host enterpize applications.

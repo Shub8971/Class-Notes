@@ -1,0 +1,35 @@
+1. Protocol
+Rules and Regulations for communication between 2 or more computing devices.
+
+2. IP (Internet Protocol):-
+It is the address of our computing device.
+
+There are 2 types of IPs:-
+
+a. Private IP:
+Private IP is for communication for internal LAN network, internet does not recognize the private ip
+and vice-versa.
+The Lan admin assigns the Private Ip and its free of cost.
+
+b. Public IP:-
+Public IP is used for internet access. internet does recognize the public ip and vice-versa.
+Public IP is assigned by the ISP (internet service provider) and is free of cost only when used.
+If we are not using it then it will be charged as per WWW rule (world wide web)	
+
+3. DNS (domain name system/service):-
+this is nothing but human readable name which we can use instead of IP address.
+
+4. Volumes:- It is storage for our ec2 instance (eg. a simple ssd drive or c drive)
+
+5. KeyPairs:-
+These are nothing but the keys which are used for authentication purpose for our ec2 instance login.
+
+
+6. Security Groups:-
+It is a 1st layer of firewall for our ec2 instances.
+we can configure inbound rules for the incoming traffic towards our ec2 instance and outbound rules for the outgoing
+traffic from the ec2 instance.
+Here we set the port, protocol and ip addresses accordingly.
+
+7. AMI (Amazon Machine Image):- this is a template which consists of OS and Software configuration.
+while launching an ec2 instance we need to select the ami, and when the instance is launch, the OS will automatially run on the machine.

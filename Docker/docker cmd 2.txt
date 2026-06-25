@@ -1,0 +1,34 @@
+
+docker run -itd ubuntu bash  ---- -d=detach mode, we can run the container in background
+docker logs -f contID/contName ----- see logs of container
+docker info --- shows docker installation info
+docker stats ---
+docker stats contID/contName ---- shows statistics of container i.e CPU, RAM, etc
+docker inspect contID/contName --- shows all info of the container, particularly the IP
+docker inspect contID/contName | grep IPA --- direct you can get the IP
+
+docker exec contID/contName command
+eg: docker exec contID/contName whoami, docker exec contID/contName hostname
+
+to login
+docker exec -it contID/contName bash
+
+Note: Diff between attach and exec
+attach:- this command attachs us to the command which is running in the container
+exec:- this means execute, we can execute commands in the container and also login with a new terminal
+
+docker rename contID/contName newname
+
+docker run -itd --name contName ubuntu bash
+
+docker commit contID/contName imagename:tagname
+Note:- if you want to push to docker registry
+1. login to docker hub
+
+docker login
+
+2. push the image but the imagename should be as below
+
+docker commit contID/contName dockerhubusername/imagename:tagname
+docker push dockerhubusername/imagename:tagname
+docker pull dockerhubusername/imagename:tagname

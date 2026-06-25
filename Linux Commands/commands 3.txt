@@ -1,0 +1,89 @@
+## Next comes the main part: which users can run what software on
+## which machines (the sudoers file can be shared between multiple
+## systems).
+## Syntax:
+##
+##      user    MACHINE=COMMANDS
+##
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+shantanu ALL=(ALL)      ALL
+mahesh ALL=(ALL)        ALL
+
+## Allows members of the 'sys' group to run networking, software,
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+%velocity ALL=(ALL)     ALL
+
+useradd shantanu
+passwd shantanu
+
+vi /etc/sudoers:- add below entry
+
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+shantanu ALL=(ALL)       ALL
+## Allows members of the 'sys' group to run networking, software,
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+%velocity ALL=(ALL)       ALL
+
+
+groupadd velocity
+gpasswd -M shantanu,ajit,pravin velocity  -- first create users
+
+cat /etc/passwd --- you can see users
+cat /etc/group -- you can see groups
+
+userdel shantanu
+groupdel velocity
+
+chmod 777 file
+
+r=4, w=2, x=1
+
+rwx rwx rwx -- 1st = owner 2nd=group 3rd=others
+
+chown username filename/foldername
+chgrp groupname filename/foldername
+
+fdisk -l ---- list disks attched to the machine
+lsblk --- list block storages and there mount points
+
+mkfs -t ext4 /dev/xvdb
+
+mkfs -- make filesystem
+-t=type
+ext4--- type of file system
+/dev/xvdb --- disk name
+
+mount /dev/xvdb /mnt ---- mounts the disk to the folder
+
+df -h . ---- gives file system status
+
+umount /dev/xvdb --- to unmount the disk from the folder
+
+NOTE:- while mounting and unmounting make sure you are running the commands from some other location
+
+#####httpd port change location
+-rw-r--r-- 1 root root 11910 Aug 13  2024 httpd.conf
+[root@ip-172-31-6-238 conf]# pwd
+/etc/httpd/conf
+[root@ip-172-31-6-238 conf]#
+
+#####################################################################
+
+#!/bin/bash
+yum install httpd -y
+service httpd start
+echo "<h1> Velocity App in Zone B </h1>" >> /var/www/html/index.html
+chmod -R 777 /var/www/html/index.html
+chkconfig httpd on

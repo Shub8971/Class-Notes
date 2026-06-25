@@ -1,0 +1,110 @@
+1) S3 bucket policy 
+2) S3 encryption policy
+3)IAM  
+4)EKS, ECS questions
+5) AWS load balancers 
+6)services and nodes K'8
+7)replication controller and replica sets k8
+8)Terraform state commands 
+9)Jenkins plug-ins related questions like which plugins you are using ? why? working?
+10)ansible playbook to download and install tomcat
+11) Jenkins pipeline to build and run container nginx 
+12) aws cli commands
+13) terraform code to create ec2 instance
+14) what you do when u have lost state file
+15) s3 bucket questions
+16) IAM questions
+17) How to copy local file to s3 using cli
+
+Linux questions
+
+18).how can you create a zero byte file using which command
+19).how to check a particular port is open or no
+20).how to kill the services in Linux tell the command?
+21).how to check the services running in Linux tell the command?
+22)using which command will you list out all the empty files in Linux
+23).why we need autoscaling
+24)Write a dockerfile for tomcat container
+25)Write a Jenkinsfile for declararive pipeline
+26)difference between cmd and entrypoint
+28)write a Terraform file to launch EC2 instance
+
+Kubernetes
+29) what is container orchestration engine.
+30) services in k8.
+31) how to deploy a statwfup resource
+32) what is ingress in k8
+33) types of Jenkin files
+34) some scenario based Qestions in k8
+35) And some scenarios how can you handle diff between S3 and Eva
+36) In S3 diff between public and private subnet 
+37) vpc private linked points 
+38) S3 storage classes 
+39) encryption in s3 or S3 encryption policy 
+40) Self Introduction daily responsibility and monthly
+41. Why secrets in k8s
+42. Challenging task u hv faced
+43. Compare terraform v/s other IAC
+44. Benefit of using container
+45. If we use same services in ec2 and docker container how does  it make huge diff in cost and  size
+46.what is agile
+47. What is declarative programming language
+48. How to set up Prometheus and grafana
+49. Automatic code changes in kubernetes from git how to configure it
+50.Terraform for each loop working
+51. Why we need to create vpc
+52. Why IGW
+53. NGW in aws
+54. Diff b/w IGW and NGW
+55. Why we need NACL
+56. Diff b/w NACL and SG
+57. Stateless and stateful application difference?
+58. What state the Security Group has?
+59. Which protocol layer does NACL is residing on
+60.Terraform Dynamic Block
+61.Git squash
+62) AWS Lambda overwiew & how is it working ?
+63) Shell or any other scripting language to invoke Lambda function Once EC2 instance is stopped
+64) Jenkins pipeline code to to pull nginx image and start nginx container
+65) AWS Lifecycle manager, AWS Code Commit, AWS Code Pipeline, AWS Cloud Formation
+66) AWS CLI command to copy a local file to s3 bucket in AWS
+67) AWS S3 Multi part upload
+68) VPC - CIDR block to allocate 250 IP addresses to 250 EC2 instances
+
+Shell script
+69)define local variable
+70)define global variable
+71)diff between local and global variables
+72)conditional in shell script
+73)write the sell script of comapring two numbers
+74) what is the git cherry-pick ?
+75) differeance between git merge and git rebase ?
+78) expain git rebase?
+79) can we combine commit into one commit git ? if yes how or no why ?
+80)  can we copy a commit and past it to another branch ? if yes how or no why ?
+81) Branching stategies you are used in project? why?
+82) How many different branch stategies you are working ? which you most preffered and why ?
+83) Diff  between ec2 and ecs
+84) What is Github actions? working?
+85)  how add a new feature branch from existing branch
+86) tell us about past project  and tools you worked on?
+87) What security mesures you took while developing the infra structure ?
+88) How you are optimizing the cost of the project?
+89) Why we need Autoscaling Grp ? 
+90) Load balncer types? diff? where to use?
+91) How we can use Network load balncer and application load balancer together on same project ?
+92) What is the sonarqube ? sonarcloud ?
+93) Docker commands to create a container?
+94) diff git pull and git fetch
+95) diff docker pull and docker run ?
+96) How to check how many containers are running or stop ?
+97) Overview of Jenkins or why ?
+98)VPC Peering ? Advantages ? need?
+99)VPC Flow logs vs Cloud Watch logs?
+100) how to create custom matrix in cloud watch logs?
+101)How you will be faceing downtime? how to do trouble shooting in AWS ? 
+102) Diff between Network layer and transport layer?
+103) Diff Apache vs Nginx ?
+104) IAM Roles ? why ? How to improvise security?  
+105) Why CloudFront ?
+

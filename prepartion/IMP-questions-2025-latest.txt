@@ -1,0 +1,966 @@
+latest questions:-
+1. What are the components in kubernetes 
+2. What is Terraform, how Terraform create and used
+3. What is state files?
+4. If pod is autodeleted, then whats happens
+5. How will you exposes pods in docker
+6. Terraform script for EC2, S3 in AWS 
+7. What is replicas and replicaset
+8. What is pods
+9. What is state files
+        - Question asked me in interview
+		Below are the questions asked to me  in interview 
+
+Questions:
+Explain Kubernetes architechture
+
+Do you have experience on container orchestration like Kubernetes? 
+
+If cloning is doing the work in the local, so why do we need to fork the repository?
+
+Apart from that, do you have any experience on the source code repos like Git, GitHub, GitLab? Have you ever worked on this? Have you ever created PRs or have you ever done the source code management at the local machines that you own?
+
+Jenkins agent Running its own job? Almost.
+
+Master's  Slave Architecture .
+
+Tell me tools which you have used in ur project 
+
+What is the difference between a docker and a container?
+
+What is the source of ur cicd pipeline 
+
+Which version are you using in Jenkins?
+
+Briefly explain about the concept of CI-CD and what all are the stages of CI-CD.
+
+From where do u get docker image
+
+1. Tell me about yourself.
+
+
+2. Why do you want to join our company ?
+
+
+3. Why are you leaving your current job?
+
+
+4. What is your current notice period?
+
+
+5. Tell me about a time you handled a high-severity incident.
+
+
+6. How do you prioritize tasks during multiple production issues?
+
+
+7. How do you handle on-call stress and burnout? 
+
+8. What is the difference between a process and a thread?
+
+
+9. How do you troubleshoot high CPU usage in Linux?
+
+
+10. Explain what happens when you run a command like curl google.com.
+
+
+11. What is a zombie process and how do you clean it up?
+
+
+12. How do cgroups and namespaces work in Linux?
+
+
+13. What is a VPN and how does it work?
+
+
+14. What is the difference between TCP and UDP?
+
+
+15. What is the purpose of DNS and how does resolution work?
+
+
+16. How would you troubleshoot a 504 Gateway Timeout?
+
+
+17. What happens when you type a URL in a browser?
+
+18. What’s the difference between a load balancer and a reverse proxy?
+
+
+19. How do you scale applications in AWS/GCP/Azure?
+
+
+20. What is an Auto Scaling Group (ASG)?
+
+
+21. What’s the difference between S3, EBS, and EFS?
+
+
+22. How do you handle cost optimization in the cloud?
+
+23. What is the difference between metrics, logs, and traces?
+
+
+24. What tools have you used for observability? (e.g., Prometheus, Grafana)
+
+
+25. How do you define and measure SLIs and SLOs?
+
+
+26. What is an error budget? How do you use it?
+
+
+27. How would you reduce alert fatigue?
+
+
+28. What is the difference between a Docker container and a VM?
+
+
+29. What is a Kubernetes pod, deployment, and service?
+
+
+30. How do you debug a crashing pod in Kubernetes?
+
+
+31. What are init containers?
+
+
+32. How do you implement rolling updates and rollbacks?
+
+33. Explain your CI/CD pipeline design.
+
+
+34. What tools have you used for CI/CD (e.g., Jenkins, GitHub Actions)?
+
+
+35. How do you handle secrets in CI/CD pipelines?
+
+
+36. What is blue-green deployment?
+
+
+37. How do you implement canary releases?
+
+
+38. What is Terraform and how does it work?
+
+
+39. Difference between Terraform and CloudFormation?
+
+
+40. How do you handle state management in Terraform?
+
+
+41. How do you write reusable Terraform modules?
+
+
+
+
+---
+
+💻 Scripting & Automation
+
+42. Write a shell script to monitor disk usage.
+
+
+43. How would you parse logs for error patterns using Python?
+
+
+44. What scripting languages are you comfortable with?
+
+---
+
+📊 Scenario-Based Questions
+
+45. How would you respond to a region-wide AWS outage?
+
+
+46. Your monitoring shows 90% CPU on 10% of your nodes—what do you do?
+
+
+47. An app has high latency but no errors—what’s your plan to debug?
+
+
+48. A DNS change takes too long to propagate—how do you handle it?
+
+
+1) Suppose you have an EC2 server with a 50GB EBS volume, and you want to upgrade it to 80GB. What steps will you follow?
+
+Steps:
+
+Go to EC2 → Volumes in AWS Console.
+
+Select the EBS volume attached to your EC2.
+
+Click Actions → Modify Volume.
+
+Change the size from 50GB to 80GB, click Modify, and then Confirm.
+
+Once done, login to the EC2 instance and run below commands to expand the file system:
+
+lsblk                         # To verify the device name (e.g., xvda1)
+sudo growpart /dev/xvda 1     # Grow the partition
+sudo resize2fs /dev/xvda1     # Resize the filesystem (for ext4)
+
+> If using xfs, then use sudo xfs_growfs -d /.
+
+
+
+
+
+---
+
+2) What is the difference between Application Load Balancer and Network Load Balancer?
+
+Feature	ALB (Application LB)	NLB (Network LB)
+
+Layer	7 (HTTP/HTTPS)	4 (TCP/UDP)
+Target type	IP, Instance, Lambda	IP, Instance
+Use Case	Web apps, microservices (path-based)	High-performance/low-latency apps
+Supports Content Routing	✅ Yes (based on URL, host)	❌ No
+TLS termination	✅ Yes	✅ Yes (since late 2022)
+Performance	Good	Ultra-high (millions of requests/sec)
+
+
+
+---
+
+✅ VPC
+
+1) What is a subnet in VPC?
+
+A subnet is a range of IP addresses in your VPC. Subnets allow you to partition the VPC into smaller network segments.
+
+Public Subnet: Connected to the internet (via Internet Gateway).
+
+Private Subnet: No direct internet access (used for DBs, internal apps).
+
+
+Example:
+
+VPC: 10.0.0.0/16
+
+Public Subnet: 10.0.1.0/24
+
+Private Subnet: 10.0.2.0/24
+
+
+
+---
+
+✅ CloudWatch
+
+1) What is the use of CloudWatch?
+
+CloudWatch is used for monitoring AWS resources and applications.
+
+Tracks metrics like CPU, memory, disk, etc.
+
+Creates Alarms, Dashboards, and Logs for visibility and action.
+
+
+2) Have you set up any alarm to resources?
+
+Yes. For example:
+
+EC2 CPU Utilization Alarm:
+
+Metric: CPUUtilization > 80% for 5 mins
+
+Action: Send alert via SNS
+
+Setup via Console or Terraform
+
+
+
+
+---
+
+✅ RDS
+
+1) What is Read Replica in RDS?
+
+A Read Replica is a read-only copy of your primary RDS instance.
+
+It helps in load balancing read traffic.
+
+Useful for scaling and disaster recovery.
+
+Replication is asynchronous.
+
+
+Example:
+
+Primary DB handles writes
+
+Read Replica handles reporting or analytics reads
+
+
+
+---
+
+✅ S3
+
+1) What is Lifecycle Policy in S3?
+
+Lifecycle policy helps manage storage costs by automating transitions:
+
+Example policy:
+
+Move to S3 Standard-IA after 30 days
+
+Move to Glacier after 90 days
+
+Delete after 365 days
+
+
+
+Set via S3 Management → Lifecycle Rules
+
+
+---
+
+✅ Linux
+
+1) What command is used to check server performance / CPU usage?
+
+top           # Live CPU/memory usage
+htop          # Better version of top (if installed)
+vmstat        # System performance
+mpstat        # CPU usage per core
+
+For just CPU:
+
+top -b -n1 | grep "Cpu"
+
+
+---
+
+2) What are the ports for HTTPS and SSH?
+
+Protocol	Port
+
+HTTPS	443
+SSH	22
+
+
+
+---
+
+3) You have a file in Linux and want to see its data. Which command will you use?
+
+cat filename           # Full file content
+less filename          # Paginated view
+more filename          # Similar to less
+tail filename          # Last 10 lines
+head filename          # First 10 lines
+
+
+---
+
+4) How can you connect EC2 to S3 bucket?
+
+Methods:
+
+IAM Role:
+
+Attach IAM role to EC2 with S3 permissions (AmazonS3ReadOnlyAccess or custom policy).
+
+
+Access from EC2:
+
+aws s3 ls s3://your-bucket-name
+aws s3 cp /tmp/file.txt s3://your-bucket-name/
+
+> Ensure AWS CLI is installed and IAM role is attached.
+
+
+
+
+
+---
+
+✅ Git
+
+1) What is git stash?
+
+git stash temporarily saves your uncommitted changes and clears your working directory.
+
+Example:
+
+git stash           # Save current changes
+git stash list      # Show all stashes
+git stash apply     # Apply most recent stash
+git stash drop      # Remove a stash
+
+Useful when:
+
+You need to switch branches but don’t want to commit current changes.
+
+
+Todays My interview questions 
+Grayatrix Pvt Lit location Mumbai
+EC2
+1) suppose u have an ec2 server and u have attached one route volume to that ec2 server its EBS Volume and its 
+50 gb right now and u want to upgrade its 80 GB now then what steps u have going to follow
+2) what is the difference between application load balancer and network load balancer
+
+VPC
+1) what is subnets in VPC
+
+Cloud watch
+1) what is the use of cloud watch
+2) have u setup any alarm to that resources
+
+RDS
+1) what is related replica in RDS
+
+S3
+1) what is lifecycle policy in s3
+
+Linux
+1)what is the command for checking the server performance
+ u have to check CPU utilization then how u use it 
+2) what is the port for HTTPS Protocol and for SSH
+3) if on Linux server u have one file and u want to se thet data in that file
+   which command u use for this 
+
+4) u have an EC2 server and u want to connect S3 bucket to that EC2 server so how u can connect
+
+GIT
+1) do u work with git so what is git stash
+
+1. How do you use Elastic Load Balancer (ELB) in your project?
+
+> In our project, we used Application Load Balancer (ALB) to distribute traffic across multiple EC2 instances in different AZs for high availability.
+We registered EC2 instances in target groups, and ALB routed HTTP/HTTPS requests based on path-based rules (e.g., /api/* to backend, /app/* to frontend).
+It also provided SSL termination, health checks, and integrated with Auto Scaling Groups to handle dynamic scaling.
+
+
+
+
+---
+
+2. What is an Auto Scaling Group?
+
+> An Auto Scaling Group (ASG) automatically increases or decreases the number of EC2 instances based on policies (like CPU > 70% for 5 minutes).
+We configured ASG with Launch Templates, min/max/desired capacity, and target tracking policies.
+It helped maintain application availability and optimize cost during traffic fluctuations.
+
+
+
+
+---
+
+3. How do you deploy a web application on AWS using EC2 and RDS?
+
+> 1. Provisioned EC2 instances for the application layer using Terraform or EC2 Launch Templates.
+
+
+
+
+
+2. Created an RDS instance (MySQL/PostgreSQL) for the database layer, in a private subnet.
+
+
+3. Installed app dependencies via User Data or Ansible.
+
+
+4. Stored DB connection strings securely using SSM Parameter Store or Secrets Manager.
+
+
+5. Configured Security Groups to allow EC2-to-RDS traffic on DB port (3306/5432).
+
+
+6. Managed DNS using Route 53 and traffic via ALB.
+
+
+
+
+---
+
+4. How do you store data in Docker?
+
+> Data in Docker is stored using:
+
+
+
+Volumes: Preferred method for persistent data. Example: docker volume create data-vol
+
+Bind mounts: Linking host directories to containers.
+
+In-container file system: Not persistent across container restarts. We used Docker Volumes for persisting logs, DB data (like Postgres), and sharing data between containers.
+
+
+
+---
+
+5. Which Linux commands do you use daily at work?
+
+> I regularly use:
+
+
+
+top, htop, vmstat – For performance monitoring
+
+df -h, du -sh – Disk usage
+
+netstat, ss, telnet, curl – Network connectivity
+
+journalctl, systemctl – Logs and service status
+
+grep, awk, sed – Text processing
+
+scp, rsync, ssh – File transfer and remote access
+
+chmod, chown – Permission management
+
+crontab – For scheduled jobs
+
+
+
+---
+
+6. How do you manage pods in Kubernetes?
+
+> We manage pods using:
+
+
+
+Deployments – For rolling updates and pod replicas
+
+kubectl – CLI for checking logs (kubectl logs), exec (kubectl exec), and pod status
+
+Liveness & Readiness Probes – For pod health checks
+
+Horizontal Pod Autoscaler (HPA) – For scaling based on metrics
+
+Namespaces – For environment separation We also monitor pods via Prometheus + Grafana and receive alerts via Alertmanager.
+
+
+
+---
+
+7. In Jenkins, if the test phase fails, how do you troubleshoot it?
+
+> 1. I check the Jenkins Console Output for stack traces or error logs.
+
+
+
+
+
+2. Validate the test stage in Jenkinsfile – ensure correct environment/config/commands.
+
+
+3. Re-run the test job manually and analyze the workspace artifacts/logs.
+
+
+4. Check if any dependency is failing – DB not reachable, wrong config, etc.
+
+
+5. If it’s a script issue, fix and commit; else, roll back recent changes.
+
+
+
+
+---
+
+8. How do you prevent DDoS attacks?
+
+> We follow several layers of protection:
+
+
+
+AWS Shield Standard: Automatically enabled for ELB, CloudFront, Route 53
+
+WAF: Web ACLs to filter malicious IPs, SQL injection, XSS
+
+Rate limiting via AWS WAF or API Gateway
+
+CloudFront CDN: Absorbs and distributes traffic
+
+Security Groups/NACLs: Restrict unwanted access
+
+Monitoring via CloudWatch + GuardDuty
+
+
+
+---
+
+9. What is a Security Group? How do you configure it in AWS?
+
+> A Security Group is a virtual firewall for controlling inbound and outbound traffic for AWS resources like EC2.
+They are stateful — return traffic is automatically allowed.
+We configure it by:
+
+
+
+Allowing specific ports (e.g., 22 for SSH, 80/443 for HTTP/HTTPS)
+
+Defining CIDR blocks or IP ranges
+
+Assigning it to EC2, RDS, ALB, etc.
+We automate this setup using Terraform or CloudFormation in production.
+
+Questions ask to me in the interview 
+1. How you use Elastic load balancer in your Project 
+2. What is autoscalling group.
+3. How you deploy web application on AWS using EC2 and RDS
+4. How you store data in docker.
+5. Explain which Linux command you used daily in your work.
+6. In kubernetes how you manage pods.
+7. In jenkins suppose if test phase fails how you are  going to troubleshoot it.
+8. Explain how you are prevent DDos attack.
+9. What is security group?How you are going to configure security groups in AWS.
+
+
+46. What is Docker Volume?
+A Docker Volume is a persistent storage mechanism used to store data outside the container filesystem. Volumes help retain data even after a container is removed and are commonly used for databases, logs, and configuration files.
+
+docker volume create my_volume
+docker run -v my_volume:/data my_image
+
+
+---
+
+47. Worked in LINUX and explained Kubernetes architecture
+Yes, I worked extensively with Linux systems for managing servers, scripting, and deployments.
+Kubernetes Architecture:
+
+Master Node Components:
+
+API Server
+
+Scheduler
+
+Controller Manager
+
+etcd (cluster state storage)
+
+
+Worker Nodes:
+
+kubelet (agent)
+
+kube-proxy (networking)
+
+Container Runtime (like containerd/Docker)
+
+
+Pods run on worker nodes and are managed by controllers like Deployments, StatefulSets.
+
+
+
+---
+
+48. Kubernetes Deployment Strategies:
+
+Rolling Update (default): Updates pods gradually without downtime.
+
+Recreate: Stops all old pods and then starts new ones.
+
+Blue-Green Deployment: New version deployed alongside old; switch traffic after verification.
+
+Canary Deployment: Gradually routes a small percentage of users to the new version.
+
+
+
+---
+
+49. Blueprint Used:
+A blueprint in DevOps usually refers to a reusable template or plan for deploying infrastructure. For example:
+
+Terraform module for reusable infrastructure
+
+CloudFormation templates
+
+Ansible Playbooks
+
+Kubernetes Helm Charts
+
+
+
+---
+
+50. Application Used for Handling Issues in Production:
+
+Monitoring: Prometheus, Grafana, CloudWatch
+
+Logging: ELK stack, Fluentd, Loki
+
+Incident Management: Jira, ServiceNow, PagerDuty
+
+Alerting: Alertmanager, Opsgenie
+
+
+
+---
+
+51. Kubernetes Cloud Computing Manager:
+Kubernetes itself is a container orchestration manager in cloud environments.
+Tools like Rancher, OpenShift, EKS, GKE, AKS help manage Kubernetes clusters in cloud platforms.
+
+
+---
+
+52. Custom Controller (Probably meant “Custom Controller”)
+In Kubernetes, a Custom Controller is a user-defined logic written using a Custom Resource Definition (CRD). It watches CRDs and reconciles the current state to the desired state (e.g., an operator pattern like MongoDB Operator).
+
+
+---
+
+53. What is Agile in DevOps?
+Agile is a software development methodology that focuses on iterative development, collaboration, and continuous feedback.
+DevOps complements Agile by automating CI/CD, improving communication between dev and ops, and ensuring faster, stable releases.
+
+
+---
+
+54. Artifacts in Project Deployment:
+Artifacts are output files from a build process that are ready to be deployed. Examples:
+
+.jar, .war (Java apps)
+
+Docker images
+
+Helm Charts
+
+Compiled binaries Stored in artifact repositories like Nexus, Artifactory, GitLab Packages.
+
+
+
+---
+
+55. Day-to-Day Activities (DevOps):
+
+Checking CI/CD pipelines
+
+Reviewing PRs and merging branches
+
+Monitoring infrastructure (CloudWatch, Grafana)
+
+Automating deployments
+
+Managing Terraform/Kubernetes configurations
+
+Handling incidents and alerts
+
+Daily stand-up meetings (Agile)
+
+
+
+---
+
+56. What is Multiple Branch Triggers?
+In CI/CD (like Jenkins or GitLab CI), multiple branch triggers allow pipelines to trigger for multiple branches (e.g., dev, staging, main).
+Example:
+
+only:
+  - main
+  - develop
+  - feature/*
+
+
+---
+
+57. How to Troubleshoot Jenkins?
+
+Check Jenkins logs: /var/log/jenkins/jenkins.log
+
+Check job logs and workspace errors
+
+Restart Jenkins: systemctl restart jenkins
+
+Validate plugin health
+
+Free up disk space or memory issues
+
+Reconfigure pipeline or credentials if failing
+
+
+
+---
+
+58. How to Back Up Jenkins?
+
+Backup the Jenkins home directory (usually /var/lib/jenkins)
+Includes:
+
+jobs/
+
+plugins/
+
+config.xml
+
+secrets/
+
+
+Use plugins like ThinBackup or script with cron jobs.
+
+
+
+---
+
+59. Where are Files Stored in Jenkins?
+
+Default location: /var/lib/jenkins/
+
+Jobs: /var/lib/jenkins/jobs/
+
+Plugins: /var/lib/jenkins/plugins/
+
+Configuration: /var/lib/jenkins/config.xml
+
+
+
+
+---
+
+60. Configuration Files in Jenkins:
+Key configuration files:
+
+config.xml: Global Jenkins configuration
+
+jobs/<job_name>/config.xml: Job-specific config
+
+credentials.xml: Stored credentials
+
+jenkins.model.JenkinsLocationConfiguration.xml: Jenkins URL
+
+secrets/: Encryption keys and secrets
+
+
+
+---
+
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: Kubernet livenes vs readyness 
+Terraform tf.state file ec2 add 
+CiCD pipeline CD process explin 
+Day to day activities 
+Devops harness
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: Where to store terraform file
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: Kubernetics services
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 1. What is a parametrized pipeline.
+2. What is Jenkins credentials pipelines and Syntex 
+3. How to argument in shell script 
+4. Can you pass an argument to the shell directly .
+5. How to install software on 50 machines using shell script
+6. Difference in playbook & role
+7. What are CD pipelines in kuberneties
+8. Types of service in kubertnes.
+9. How to expose traffic publicly
+10. Difference between Liveness prob and Readiness prob
+11. Autoscling in kuber
+12. State file in terraform
+13. What is Modules in terraform .
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 1. Tell me your experience
+2. Tell me your project architecture.
+3. If you have 3 tired applications let me which 
+4. How to monitor these applications
+5. How to secure these applications 
+6. Explain the CI/ CD pipeline in your project 
+7. Any issue in the CI/CD application project.
+8. Which is the Devops and agile process.
+9. Which tool is used in CI/CD pilling. 
+10. Which is puligggi used in CI/CD
+11. What are parameters in build.
+12. How to secure a build.
+13. How to test the build.
+14. Git branching strategy.
+15. Git rebage and git merger.
+16. What is Git stash.
+17. What is Git webook
+18. How to handle git conflict in git and how to handle it.
+19. Write CI/CD pipeline in notepad.
+20. Write code for git deployment.
+21. Write down code deployment
+22. What is terraform and explain
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 23. Write down terraform basic file code.
+24. Data source in treform.
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 25. Treform State lock
+26. Treform output
+27. Remove backend in treform
+28. Null resource in treform
+29. Treform provisiner
+30. Terraform commands
+31. How to create an instance in treform
+32. What is terraform resources
+33. ANSIBLE Roles
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 34. ANSIBLE -P
+35. Ad-hoc command in ANSIBLE
+36. ANSIBLE tower
+37. Difference between DOCKER & Virtual Machine
+38. Docker composed
+39. Write docker file
+40. Docker command
+41. Docker container logs
+42. Docker logs 
+43. Difference between DOCKER container and docker file
+44. What is docker command used to remove image
+45. Exist code in docker
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 46. What is Docker volume 
+47. Worked in LINUX and explained Kubernetes architecture 
+48. Kubernetes deployment stargies 
+49. Blue print used
+50. Application used for issue handle in production
+51. Kubernetes cloud computing manager
+52. Customer controller
+53. What is agile in Devops
+54. Artificates in project deployment
+55. Daily to day activities
+56. What is Multiple brach triggers
+57. How to troubles jenksi 
+58. How to do back-up Jenkins 
+59. Where file store in Jenkins
+60. Configuration files in Jenkins
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 1. Good practices treform 
+2. Good practices CI/ CD pipeline
+3. Good practices in 
+4. Basic stage in CI and CD pilpinng
+5. Linux commnad
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: Questions -
+1. What are the steps to create a buildspace file
+2. EC2 status check in health check
+3. If one EC2 status check fails
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: 1. How to do the troubleshooting of the server not responding
+2. What is hardline and soft link 
+3. How to secure the server
+4. Which module of agile you have worked
+5. What is sprint
+6. How to handle the conflicts in sprint
+7. What is the difference between an application load balancer, 
+8. How to parameters Jenkins
+9. What is master slaves
+10. How to use the anciable in project
+11. How you worked in k8
+12. What is use of ABC in k8
+13. How to install certificate
+14.
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: General DevOps Questions
+What does DevOps mean to you, and how have you applied DevOps principles in your previous roles?
+Can you describe a time when you improved a deployment process? What tools did you use?
+Linux
+What are the key differences between Linux and Windows operating systems?
+How do you manage …
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: please practice on draw.io to design the devops infrastructure for 1000 million request using kubernetes clustering
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: In the context of DevOps, the building blocks of a system can be categorized to support continuous integration, continuous delivery (CI/CD), and collaboration between development and operations. Here are the key components:
+
+1. Version Control
+Git: A distributed version control system for tracking changes in …
+[9:16 pm, 28/1/2025] Dyaneshwar Velocity Staff: If you have a virtual machine and you need to access it from public internet. So what all components you will need in between and what will be the request flow
+[9:17 pm, 28/1/2025] Dyaneshwar Velocity Staff: Job Description: 
+As a Devops cloud engineer with 4 to 6 years of experience working on both on-premise and AZURE /AWS/other cloud-based infrastructures for development and production environments, you would be responsible for designing, implementing, and managing scalable and reliable solutions across hybrid environments. Your role would involve deep expertise in cloud services, infrastructure automation, and best practices for both development and production workloads.
+ 
+ 
+Responsibilities
+Hybrid Cloud Architecture: Designing hybrid cloud architectures that seamlessly integrate on-premise and cloud resources to meet the needs of development and production workloads. This includes designing connectivity solutions such as VPNs or Direct Connect.
+Cloud Service Selection and Configuration: Selecting and configuring cloud services from AZURE/AWS or other cloud providers to support development and production environments. This might include compute, storage, networking, databases, and other services.
+Infrastructure as Code (IaC): Implementing Infrastructure as Code practices using tools like AZURE/AWS CloudFormation, Terraform, or Ansible to automate the provisioning and management of infrastructure components across hybrid environments.
+CI/CD Pipeline Implementation: Designing and implementing CI/CD pipelines for both development and production environments to automate software build, testing, and deployment processes. This involves integrating with version control systems like Git and leveraging tools like Jenkins, GitLab CI, or AWS CodePipeline.
+Containerization and Orchestration: Implementing containerization solutions using Docker and container orchestration platforms like Kubernetes for development and production workloads. This includes managing containerized applications across hybrid environments for scalability and portability.
+Security and Compliance: Implementing security best practices and compliance measures for both on-premise and cloud environments. This includes managing identity and access management (IAM), encryption, network security, and ensuring compliance with industry standards and regulations.
+Monitoring and Performance Optimization: Implementing monitoring and logging solutions using tools like AWS CloudWatch, Prometheus, or ELK stack to track system performance, identify bottlenecks, and optimize resource utilization across hybrid environments.
+High Availability and Disaster Recovery: Designing and implementing high availability and disaster recovery solutions for both development and production environments. This includes implementing backup and restore mechanisms, failover strategies, and disaster recovery testing.
+Cost Optimization: Implementing cost optimization strategies to ensure efficient use of cloud resources and minimize cloud spending. This includes leveraging services like AWS Cost Explorer, Reserved Instances, and Spot Instances.
+Collaboration and Communication: Collaborating with cross-functional teams including developers, operations, security, and business stakeholders to ensure alignment on project goals and priorities. Effectively communicating technical solutions and recommendations.

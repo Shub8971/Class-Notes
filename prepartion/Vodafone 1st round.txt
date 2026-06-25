@@ -1,0 +1,150 @@
+Vodafone 1st round
+############################################
+
+1.what is your day to day responsiblities in your organization.
+
+2.suppose your doing deployment and obiusoly some pod will be down so what is your approach to to get high availabilty and zero down time.
+
+3.what is concept of HPA?
+
+4.have you ever written any yml for creating pod and tell me what are four manditory field?
+
+5.what are different service we have in k8s? what is diff between them?
+
+6.suppose in deployment file i have mentioned replicas=5 how to reduce it? means instead of 5replicas 4 replicas there.
+
+7.what is static pod?
+
+8. what is use of kubescheduler in k8s?
+
+7.can scheduler directly communicate with kubelet?
+
+8.what is diff between current state and desired state in terraform?
+
+9.in your tf file what code you have written it is current state or desired state?
+
+10.what are different provisioner n terraform?
+
+11.what is difference between git merge and rebase and why we use it?
+
+12. what is difference between reset and revert in github?
+
+13. suppose your working on perticular fille you done the changes what is your approach to push file to remote repo can you please explain commands?
+
+14. what is origin and master?in github
+
+15.what are different AWS services your using?
+
+16.what is difference between public and private subnet in vpc?
+
+17.do you have any idea how we can reduce overall cost of our resource? how we can optimize cost of our resources?
+
+18.what is spot reserved instances?
+
+19.what is s3 data life cycle that you mentioned in cv?
+
+20.please tell 5 monitoring commands? in linux.
+
+21. what is command to check space of any mountpoint?
+
+22. suppose you want to find all file that are older than one year you have to list down what is your approach? shell script will write
+#######################################################################################################
+
+vodafone 2nd round
+1.why terraform is most popular? why it is required.
+
+2. have you created any module in terraform?
+
+3. suppose i need to create ec2 using terraform what are the tf file i need to create and what details i need to create?
+
+4. suppose i need to create security group for ec2 instance in which file i need to define security group?
+
+5. suppose you are runnning the resources that time you will receive error lock has been created on this module need to remove it how you can resolve it?
+
+6. how you troubleshoot terraform error while deploying resiurces?
+
+7. what is diff between tf plan and tf apply?
+
+8. where does this terraform store all the configuretion? tf. state 
+
+9. where does the tf state file is stored?
+
+10. if i need to check last 10 commit then what coomand?
+
+11. if ineed to check diif between current commit and previous commit what is command?
+
+12. if i need to check suppose you are working with 10 people and one of member do commit and you want to see details what exactly commit is done what is command for that?
+
+13. suppose i have requirement to change my branch from master to dev what is command for that?
+
+14. if you need to synch with master btanch what command will use?
+
+15. what is git rebaase?
+
+16. if i need to rolback the recent commit what appraoch will you do?
+
+17. what is structure of playbook in ansible?
+
+18. suppose i have requirement that i need to install pakacge on 10 machine then what will be your approach?
+
+19. during execution you realise one host is down out of 10 machine what kind of error you will get? in ansible playbook
+
+20. what are services you are more familiar with AWS?
+
+21. any idea about EKS?
+
+22. what is  architecture and what are the configuration file in k8s?
+
+23. what is use of scheduleer in k8s?
+
+24. what is of etcd and kublets?
+
+25. if i need to check details of all pod what is command?
+
+26. if i neet to check node status?
+
+27. if i need to check logs of perticular pod?
+
+28. what is namespaces?
+
+29. in one group also associated log from multiple pod or does it relevant one pod one namespace?
+
+30. if i need to connection between ec2 to database what thing i need to do?
+
+31. what is use of end point service?
+
+32. have you heard about route 53?
+
+33. have you worked on EFS s3?
+
+34. what is diff between s3 and efs?
+
+35. have you created any pipline? or just executing?
+
+36. how will you pull image form docker hub?
+
+37. how will you run container in background?
+
+38. if i need to  check running conatainer what is command?
+
+39. any other monitoring tools you are using?
+
+40. in grafan you are configuring or just monitoring?
+
+41. have you done any certification?
+
+42. what are the basic req. we need to full fill as devops engg.? with respect available infra.
+
+43. what is diffe between devops and agile?
+
+44. assume you are in organization only devops you have to build it from scracth what is first thing will you do?
+
+45. what is SLA and KPI?
+
+46. what is reason for looking job change?
+
+47. since laste 3 years that you have been working in some organization have you have been promoted or got appriciation?
+
+48. have you heared about waterfall model which one is better waterfall is better or devops model is better?
+
+49. what are the drawbacks of waterfall model over agile model?

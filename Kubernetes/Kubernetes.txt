@@ -1,0 +1,259 @@
+1  clear
+    2  useradd velocity
+    3  passwd velocity
+    4  vi /etc/sudoers
+    5  yum install docker -y
+    6  systemctl start docker
+    7  gpasswd -a velocity docker
+    8  cat /etc/group
+    9     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   10  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   11  kubectl version
+   12  kubectl version --client
+   13  history
+
+14  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+   15  sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+   16  sudo su - velocity
+
+1  minikube start
+    2  minikube status
+    3  minikube stop
+    4  minikube rm
+    5  minikube delete
+    6  minikube start
+
+###pods##
+[velocity@ip-172-31-39-46 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+
+spec:
+  containers:
+    - name: v1
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+
+
+ 10  cat pod.yaml
+   11  kubectl apply -f pod.yaml
+   12  kubectl get nodes
+   13  kubectl describe nodes minikube
+   14  kubectl get pods
+   15  kubectl describe pods velpod
+   16  kubectl get pods -o wide
+
+
+###pod restart#
+[velocity@ip-172-31-39-46 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+
+spec:
+  containers:
+    - name: v1
+        image: 'centos:8'
+        command: [ "bash" ]
+
+  restartPolicy: Never #by default its Always
+
+21  vi pod.yaml
+   22  kubectl apply -f pod.yaml
+   23  kubectl get pods
+   24  kubectl describe pods
+   25  kubectl get pods
+   26  kubectl delete pods velpod
+   27  vi pod.yaml
+   28  kubectl apply -f pod.yaml
+   29  kubectl get pods
+36  kubectl logs -f velpod
+   37  kubectl logs -f velpod -c v1
+
+
+######annotations###
+
+[velocity@ip-172-31-39-46 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+  annotations:
+    description: my 1st pod
+    domain: telecom
+    env: qa
+
+spec:
+  containers:
+    - name: v1
+      image: 'centos:8'
+       command: [ "ping", "localhost" ]
+
+###########multi-container pods################
+[velocity@ip-172-31-39-46 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+  annotations:
+    description: my 1st pod
+    domain: telecom
+    env: qa
+
+spec:
+  containers:
+    - name: v1
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+
+ - name: v2
+      image: ubuntu
+      command: [ "/bin/bash", "-c", "while true; do echo 'vel app 1'; done" ]
+
+
+ 51  kubectl logs -f velpod
+   52  clear
+   53  kubectl logs -f velpod -c v1
+   54  kubectl logs -f velpod -c v2
+   55  kubectl delete pods velpod
+   56  vi pod.yaml
+   57  kubectl apply -f pod.yaml
+   58  kubectl get pods
+   59  kubectl describe pods
+   60  kubectl logs -f velpod -c v1
+   61  kubectl logs -f velpod -c v2
+   62  kubectl exec velpod -c v1 -- hostname
+   63  kubectl exec velpod -c v2 -- hostname
+   64  kubectl exec velpod -c v2 -- whoami
+   65  kubectl exec velpod -c v1 -- whoami
+   66  kubectl exec velpod -itc v1 -- bash
+   67  kubectl exec velpod -itc v2 -- bash
+   68  cat pod.yaml
+###########env variables#######
+[velocity@ip-172-31-39-46 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+  annotations:
+    description: my 1st pod
+    domain: telecom
+    env: qa
+
+spec:
+  containers:
+    - name: v1
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+      env:
+        - name: domain
+          value: qa
+
+        - name: name
+          value: mahesh
+
+    - name: v2
+      image: ubuntu
+      command: [ "/bin/bash", "-c", "while true; do echo 'vel app 1'; done" ]
+      env:
+        - name: domain
+          value: uat
+
+        - name: name
+          value: shantanu
+##########Pods with ports@#########
+[velocity@ip-172-31-39-46 ~]$ cat httpd.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod-1
+  annotations:
+    description: my 1st httpd pod
+
+spec:
+  containers:
+    - name: h1
+      image: httpd
+      ports:
+        - containerPort: 80
+
+
+we cannot directly access this website running on port 80 from outside the cluster
+we need to login inside the cluster and then access
+
+90  minikube ssh
+89  curl http://10.244.0.10
+exit
+
+109  kubectl get pods --show-labels
+  110  kubectl label pod velpod name=shantanu
+  111  kubectl get pods --show-labels
+  112  kubectl label pod velpod name-
+  113  kubectl get pods --show-labels
+  114  kubectl get pods -l domain=telecom
+  115  kubectl get pods -l env=dev
+  116  kubectl get pod -l domain!=dev
+  117  clear
+  118  kubectl get pods --show-labels
+  119  kubectl get pods -l domain!=telecom
+  120  kubectl get pods -l env!=qa
+  121  kubectl delete pods -l env-dev
+  122  kubectl delete pods -l env=dev
+  123  kubectl apply -f pod-1.yaml
+  124  history
+126  kubectl get pods --show-lables
+  127  kubectl get pods --show-labels
+  128  kubectl get pods -l 'env in(dev,qa)'
+  129  kubectl get pods -l 'env in(dev,qa,prod)'
+ 
+  131  kubectl get pods -l 'env notin(dev,qa,prod)'
+  132  kubectl get pods -l 'domain in(telecom,insurance)'
+  133  history
+[velocity@ip-172-31-39-46 ~]$
+
+[velocity@ip-172-31-39-46 ~]$ cat pod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod
+  labels:
+    env: qa
+    domain: telecom
+
+
+spec:
+  containers:
+    - name: vel-1
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+[velocity@ip-172-31-39-46 ~]$ cat pod-1.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod-1
+  labels:
+    env: dev
+    domain: insurance
+spec:
+  containers:
+    - name: vel-2
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+[velocity@ip-172-31-39-46 ~]$ cat pod-2.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: velpod-2
+  labels:
+    env: prod
+    domain: healthcare
+
+spec:
+  containers:
+    - name: vel-3
+      image: 'centos:8'
+      command: [ "ping", "localhost" ]
+[velocity@ip-172-31-39-46 ~]$

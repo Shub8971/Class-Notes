@@ -1,0 +1,18 @@
+NETWORK
+
+docker network ls ---- list the networks
+docker network inspect networkname ---- gives details of the network
+docker network rm networkname --- delete the network
+docker network create networkname --driver=bridge --- default driver is bridge
+
+docker run -itd --network networkname centos:8 bash
+
+
+ifconfig --- to check the interfaces
+ip a
+curl url ---- to check the webpage
+
+
+------------------------------------------------------------------------------------------------------------
+COMPOSE
+

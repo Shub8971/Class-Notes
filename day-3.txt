@@ -1,0 +1,46 @@
+SDLC Models:-
+There are multiple types of SDLC models:
+1. WaterFall Model
+2. Spiral Model
+3. V model
+4. Agile
+5. Hybrid .....
+
+1. WaterFall Model
+Incase of Waterfall Model, the output of one phase is the input
+to the other phase
+
+eg:- the output of R and A phase is the input to the system design phase
+
+Without completion of a previous phase the next phase will not start
+
+once the previous/prior phase is completed then the next phase is started.
+
+
+Advantages of WaterFall Model:-
+1. Simple and Easy to understand and use
+2. Easy to Manage
+3. Phases are completed and worked upon one at a time.
+4. requirement and documentation are very well understood and noted down
+5. Cleary Defined Stages
+
+
+Disadvantages of Waterfall model:-
+1. Time to Market:-
+the software application or the product released to the market will take time
+compared to other models.
+time to market is very high
+
+2. High Amount of Risk:-
+Incase there is any issue found during a phase, then all the
+things would restart right from the beginning.
+
+for eg:- If there is an issue found in the testing phase, then
+the issue and checked and anaylyzed, redeveloped and then re-tested
+when would take time
+
+Hence for complex projects, with high business logic and analytics
+waterfall model is not recommended.
+
+3. Poor model for large or ongoing projects
+4. it is not a feedback based model.

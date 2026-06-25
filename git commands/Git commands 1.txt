@@ -1,0 +1,43 @@
+yum install git -y ---- install git
+git init ---- initializes the folder to git repo a .git folder is created
+git status ---- shows where the change is
+git add filename --- adds the file to the staging area
+git rm --cached filename ----- reverts the file from SA to WSP
+git commit -m "comment" ---- commits all the change from SA to LR
+git log ---- shows all the changes in the LR
+git show commitID --- shows in detail the commit description
+git config --global user.name username --- set the username on the machinegit 
+git config --global user.email useremail --- set useremail on the machine
+git config --list ------ shows the git config
+git config --global --edit --- we can edit the config
+git remote add origin origin_url --- adds the origin
+git remote -v
+git remote show origin ----- shows origin url
+git remote rm origin ----deletes the origin
+git push origin master --- pushes the changes from LR to RR
+
+
+1. When we run the git init command the folder is divided at the backend into 3 parts
+a. wsp --- here we edit, create, delete the files/dir
+b. SA --- here we finalize the changes before commiting
+c. LR --- there we commit the changes which then can be pushed to the RR. 
+   Here by default a master folder is created where the changes are commited.
+
+2. HEAD ---- it is a pointer to the latest commit.
+
+git clone url --- downloads the RR to local machine with all history of commits
+git pull origin master ---- downloads the change from RR and merges it to LR
+git log -1
+git log -2
+git log -3 ------- shows latest commits -1=latest 1 commit -2=latest 2 commits and so on
+git log --oneline ------- shows logs in oneline
+git commit --amend -m "new message" --- updates the message of latest commit
+git commit --amend --author "name <email>" ---- updates author of latest commit
+git fetch origin master ---- download the metadata of the change from RR to LR
+git diff origin/master ------ run this command after running the fetch command
+                              so that we can the exact diff in LR and RR
+git checkout filename ----- reverts the modified file from the wsp
+git clean -fd ----- deletes the untracked file from the wsp
+
+.gitignore ---- used to push empty dir to git repo
+			--- also used to ignore files in the wsp

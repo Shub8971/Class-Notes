@@ -1,0 +1,138 @@
+EC2:-
+creating instances as per requirement
+Managing Security Groups
+Creating EBS snapsnots and AMIs for DEV QA and UAT Env
+Creating EBS snapshot lifecycle for...
+Starting and Stopping EC2 instances when not in use. ---- use aws cli create shell scripts
+Knowledge about LB and AS as its used in production
+we use all on demand, reserved and spot
+
+VPC:-
+Route table updates
+NACL updates
+Creating vpc,subnets, IGW, NAT
+Peering connection from test-vpc to prod-vpc
+vpc monitoring with flow-logs, generating report and providing it to network admin team
+
+S3:-
+keep backups of project files and wars, logs etc.
+static website (internal project website, i.e documentation website)
+cross region replication
+s3 event notifications
+object lifecycle creation
+creating, deleting buckets,
+uploading, deleting objects to and from the buckets.
+use S3 CLI
+
+IAM:-
+Creating groups, 
+adding users to groups
+active dir is sycned so users are synced directly to AWS.
+giving policies to all the users and groups as per requirement
+creating customer managed and inline policies with the help of visual editor
+creating and maintaining multiple roles
+
+CW:-
+Monitoring of different metrics
+creating custom metrics
+creating alarms
+maintaing and creating dashboards
+tracking CW events and setting up appropriate rules and targets
+SNS configuration as a target
+CW logs configruation for our tomcat logs
+
+SNS:-
+creating topics and updating subscribers
+
+CT:-
+creating trail, generating report and sharing it with IT ops team, AWS complicance team of our company
+
+RDS:-
+provisioning of RDS database and connection to the envs.
+creating subnet groups
+taking backups and snapshots
+creating read replices
+multi-AZ deployment of the DB in prod - have knowledge about it
+
+GIT:-
+creating repos (dev repos, QA repos, and devops)
+[dev repos- application source code ---- composefile, dockerfile, jenkins file also here]
+[qa repos - test framework ---- composefile, dockerfile, jenkins file also here]
+[devops repo - dockerfile, scripts backup, yaml files etc, jenkins file, tf config files]
+creating branches (as per branching stratergies)and tags
+raising PR
+resolving merge conflicts
+forks
+adding collaborators to our repositories (read/write)  -- giving permission to the report
+Managing Web hooks
+integration with jenkins
+Jenkins:-
+creating, maintaining and monitoring jobs  (freestyle, declarative pipeline, multibranch pipeline)-- build, deployment, test case execution, report generation
+Master Slave configuration
+creating users and access control
+creating and maintaing credentials
+managing diff plugins
+taking backup of jenkins  -- backup plugin
+updating jenkins
+Maintaining Jenkinsfile in SCM (github)
+Scheduling jobs as per requirement
+Jenkins github config -- so that i can view latest changes in my code in jenkins itself
+
+Docker:-
+Creating docker images and containers
+pushing the custom images to docker registry
+Creating and Maintaining custom images with the help of docker files
+creating docker-compose files of multi-container deployment
+creating docker volumes and bind mount
+Basically we are using docker for deployment of our application
+
+Ansible:-
+Configuration Management of all the linux machines in DEV, QA, UAT envs
+Updating softwares/ta such and Java, git, tree, docker, maven, tomcat etc, patching, awslogs, users etc
+creating playbooks, encryption and decryption of playbooks using ansible-vault
+Creating and maintaining ansible roles
+
+Linux:-
+All our infra is in linux only.
+env variables set,
+path set
+patching
+installing packages etc....
+shell scripts knowledge
+maven:-
+dependency management in pom, we edit the dependency in pom.xml file as guided by the developer
+artifactory access management (jfrog , nexeus) -- mvn deploy {artifactory link setup up in settings.xml, plus userid and password is also set in settings.xml file}
+setting.xml file is in maven_home/conf
+build, compile package
+jenkins intergration
+running qa framework test using QA team framework pom.xml file eg:- mvn run-tests
+[after war is deployed on the server, dwe clone the qa framework and run the mvn run-test command, so the java coe in the test framework will execute the tests]
+
+
+Project Team:-
+Dev:-10-20
+QA:-30-40
+UAT:-5-10
+Devops:- 4 - 2 seniors and app junior ho
+
+Instances kitne hain:- 
+DEV:- 10-15
+QA:- 30-40 instance (alag alag type ki testing hoti hain manual, automation, api and performance, and diff machines are needed for differnet feature based application setup or env setup)
+(qa teams asks to setup properties in application files to change the behaviour of application as per requirement)
+(qa team can ask DB changes as well, they will ask to run some DB commands)
+UAT- 5-10
+
+PROD:- 20-30 high config vms --- autoscaling setup
+
+flavour of linux :- RHEL, amazon AMI
+type:- 8GB 2core for test envs
+	:- 16gb 4core for prod and pre-prod and perf envs, jenkins, ansible machine
+	
+Note DOwn all the softwares versions which u r using and mention in resume
+
+AMI: per envs 2 AMI
+VPC- 2  (test-vpc , prod vpc)
+Subnet:- QA -2 multiple zone
+		 DEV-2 multiple zone
+		 UAT-2 multiple zone
+		 DEVOPS - 1 Subnet -- AMI also present

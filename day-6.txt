@@ -1,0 +1,41 @@
+Virtual Machine:- 
+Virtual Machine is a machine which consists of OS, Storage, RAM, CPU etc
+and accessed over the network.
+Hardware is not physically present in front of user.
+
+
+Enviornment:-
+this consists of multiple virtual machine hosting a software application and server.
+here there are multiple types of envs.
+1. production env:-
+this is a env where client accessces the software application.
+software is deployed on this env in the deployment/delivery stage of SDLC
+PE is a highly critical and IMP env and must have zero downtime.
+
+2. Tests Env.
+here in test envs, multiple different testing teams access these Virtual
+machines to test the software running/deployed on these machines
+if the application is running fine on tests envs and the testing done by the testers
+is sucessful then we can move the application to the production and release to the client
+
+
+Types of testing Envs:-
+1. Dev Env:-
+here the development team will access this env to test dev changes.
+
+2. QA Env:- (Quality Assurance/Analysis)
+this is a testing team env, here QA team(testing team) will test all the
+application features thoroughly.
+here multiple testers having diff skill set, some are manual tests, automation testers, ATT tests, API testers
+will test the application.
+for them this env is created.
+
+3. UAT Env:- (User Acceptance Testing)
+here UAT team will access/use this env for UAT testing,
+here in UAT testing client specific scenarios are tested. means how the application is used by client is checked.
+
+4. Performance Env:- 
+here the application performance is tested by performance team.
+- CPU utilization
+- Load Testing and more
+

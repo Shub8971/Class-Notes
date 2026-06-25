@@ -1,0 +1,18 @@
+FROM amazonlinux:2
+
+# Install httpd using yum
+RUN yum update -y && \
+    yum install -y httpd && \
+    yum clean all
+
+# Change Apache listen port from 80 to 8080
+RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf
+
+# Copy index.html
+COPY index.html /var/www/html/index.html
+
+# Expose Apache port
+EXPOSE 8080
+
+# Start Apache in foreground
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]

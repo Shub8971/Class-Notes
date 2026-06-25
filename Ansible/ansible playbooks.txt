@@ -1,0 +1,176 @@
+#####sample playbooks#######
+
+target section
+###single hosts
+
+--- #mytarget.yaml file
+- hosts: devlinux
+  user: ansible
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+--- #mytarget.yaml file
+- hosts: devlinux[1]
+  user: ansible
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+## 2 hosts
+[ansible@ip-172-31-45-173 ~]$ cat target.yml
+--- #mytarget.yaml file
+- hosts: devlinux[1], qalinux[1]
+  user: ansible
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+
+run as ansible-playbook target.yaml
+
+and dry run to check identation ansible-playbook .yml --check
+
+
+############tasks
+single tasks
+- hosts: devlinux
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: install httpd on servers
+      action: yum name=httpd state=present
+
+
+###multiple tasks
+[ansible@ip-172-31-45-173 ~]$ cat task.yml
+- hosts: devlinux
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: install httpd on servers
+      action: yum name=httpd state=present
+    - name: start httpd service
+      action: service name=httpd state=started
+    - name: copy index.html file
+      action: copy src=index.html dest=/var/www/html
+
+
+### host-tasks.
+
+- hosts: devlinux[0]
+  user: ansible
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+    - name: install git
+      action: yum pkg=git state=present
+
+- hosts: devlinux[1]
+  user: ansible
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+    - name: install tree
+      action: yum pkg=tree state=present
+
+
+############################Variables##############
+
+- hosts: devlinux
+  user: ansible
+  become: yes
+
+  vars:
+    pkgname: httpd
+    index_path: /var/www/html/
+
+  tasks:
+    - name: install apache
+      action: yum pkg="{{pkgname}}" state=present
+    - name: start apache
+      action: service name="{{pkgname}}" state=started
+    - name: deploy index file
+      action: copy src=index.html dest="{{index_path}}"
+
+
+#################handlers#############
+
+- hosts: devlinux
+  user: ansible
+  connection: ssh
+  become: yes
+
+  tasks:
+    - name: install httpd
+      action: yum pkg="httpd" state="present"
+      notify: start service
+
+  handlers:
+        - name: start service
+          action: service name=httpd state=started
+		  
+### multiple handlers
+
+
+- hosts: devlinux
+  user: ansible
+  connection: ssh
+  become: yes
+
+  tasks:
+    - name: install httpd
+      action: yum pkg="httpd" state="present"
+      notify:
+        - start
+        - deploy
+
+  handlers:
+        - name: start
+          action: service name=httpd state=started
+        - name: deploy
+          action: copy src=index.html dest=/var/www/html
+
+
+##################
+
+LOOPS
+
+[ansible@ip-172-31-45-173 ~]$ cat loops.yml
+- hosts: devlinux
+  user: ansible
+  connection: ssh
+  become: yes
+
+  tasks:
+    - name: print task
+      command: echo "{{item}}"
+      loop:
+        - "one"
+        - "two"
+        - "three"
+
+
+[ansible@ip-172-31-45-173 ~]$ cat loops.yml
+- hosts: devlinux
+  user: ansible
+  connection: ssh
+  become: yes
+
+  tasks:
+    - name: create user task
+      user: name="{{item}}" state=present
+      loop:
+        - "one"
+        - "two"
+        - "three"

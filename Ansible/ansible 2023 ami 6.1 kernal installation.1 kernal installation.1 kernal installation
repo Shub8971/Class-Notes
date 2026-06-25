@@ -1,0 +1,99 @@
+#####Configuring ssh connection with service account on all ec2 instances 6.1 kernal#
+
+Changes to do on all the machines:-
+
+[root@ip-172-31-13-216 ~]# history
+    1  useradd velocity
+    2  passwd velocity
+    3  vi /etc/sudoers
+    4  history
+in the sudoers file
+
+#
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+velocity ALL=(ALL)      NOPASSWD: ALL
+
+## Allows members of the 'sys' group to run n
+
+after this changes log and login
+updat ehe sshd_config file as below and restart sshd
+ 5  vi /etc/ssh/sshd_config
+    6  service sshd restart
+
+
+
+# Authentication:
+
+#LoginGraceTime 2m
+PermitRootLogin yes  ---############
+#StrictModes ye
+
+
+# Explicitly disable PasswordAuthentication. By presetting it, we
+# avoid the cloud-init set_passwords module modifying sshd_config and
+# restarting sshd in the default instance launch configuration.
+PasswordAuthentication yes   ----########
+PermitEmptyPasswords no
+
+The next task you need to do only on workstation
+
+switch to the service account
+
+sudo su - velocity
+
+
+ 2  ssh-keygen
+    3  cd .ssh/
+    4  ls -ltr
+    5  cat id_rsa.pub
+    6  cat id_rsa
+    7  ls -ltr
+    8  cd
+    9  ssh-copy-id velocity@172.31.11.150
+   10  ssh-copy-id velocity@172.31.7.200
+
+On workstation install ansible:-
+
+create ansible.cfg file in /etc/ansible
+
+and edit below
+
+
+[defaults]
+
+# some basic default values...
+
+inventory      = /etc/ansible/hosts  -----#############
+#library        = /usr/share/my_modules/
+#module_utils   = /usr/share/my_module_utils/
+#remote_tmp     = ~/.ansible/tmp
+#local_tmp      = ~/.ansible/tmp
+#plugin_filters_cfg = /etc/ansible/plugin_filters.yml
+#forks          = 5
+#poll_interval  = 15
+sudo_user      = root  ----##########
+#ask_sudo_pass = True
+
+also create hosts file and create groups in there
+
+
+[velocity@ip-172-31-13-216 ansible]$ vi ansible.cfg
+[velocity@ip-172-31-13-216 ansible]$ cat hosts
+[devlinux]
+172.31.11.150
+172.31.7.200
+
+[qalinux]
+172.31.15.79
+[velocity@ip-172-31-13-216 ansible]$ pwd
+/etc/ansible
+[velocity@ip-172-31-13-216 ansible]$ ls -ltr
+total 24
+drwxr-xr-x. 2 root root     6 Mar 24 18:48 roles
+-rw-r--r--. 1 root root 19981 Jul 31 15:26 ansible.cfg
+-rw-r--r--. 1 root root    62 Jul 31 15:27 hosts
+[velocity@ip-172-31-13-216 ansible]$
+
